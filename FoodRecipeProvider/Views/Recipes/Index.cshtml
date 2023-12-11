@@ -1,0 +1,40 @@
+﻿@model Root
+
+@{
+    ViewData["Title"] = "Search Recipes";
+}
+
+<h1>Search Recipes</h1>
+
+<form method="get" action="/Recipes/Index">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Enter recipe name" name="query" required>
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="submit">Search</button>
+        </div>
+    </div>
+</form>
+
+@if (Model != null && Model.hits != null && Model.hits.Any())
+{
+    <div class="row">
+        @foreach (var recipe in Model.hits)
+        {
+            <div class="col-sm-6 col-md-4 mb-4">
+                <div class="card">
+                    <img src="@recipe.recipe.image" class="card-img-top" alt="Recipe Image" width="100%" height="auto">
+                    <div class="card-body">
+                        <h5 class="card-title">@recipe.recipe.label</h5>
+                        <p class="card-text">@Html.Raw(recipe.recipe.ingredientLines[0])</p>
+                        <a href="@Url.Action("RecipeDetails", new { recipeUri = recipe.recipe.uri })" class="btn btn-primary">View Recipe</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>No recipes found.</p>
+}
+
