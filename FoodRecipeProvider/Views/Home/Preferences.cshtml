@@ -6,10 +6,10 @@
     @foreach (var cuisineType in Model.AvailableCuisineTypes)
     {
         <div>
-            <input type="checkbox" name="SelectedCuisineTypes" value="@cuisineType" />
-            <label>@cuisineType</label>
+            <input class="form-check-input"  type="checkbox" name="SelectedCuisineTypes" value="@cuisineType" />
+            <label class="form-check-label">@cuisineType</label>
         </div>
+        
     }
-
     <button type="submit">Save Preferences</button>
 </form>
