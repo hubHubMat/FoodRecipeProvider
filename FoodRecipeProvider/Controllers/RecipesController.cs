@@ -5,6 +5,7 @@ using FoodRecipeProvider.Models;
 using Newtonsoft.Json;
 using Microsoft.DotNet.MSIdentity.Shared;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using System.Diagnostics;
 
 namespace FoodRecipeProvider.Controllers
 {
@@ -16,16 +17,14 @@ namespace FoodRecipeProvider.Controllers
             _edamamApiClient = edamamApiClient;
         }
 
-        // GET: RecipesController
         public async Task<IActionResult> Index(string query)
         {
-           /* string query = "soup";*/ // The search query for recipes
             var response = await _edamamApiClient.GetRecipesAsync(query);
 
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
-                Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(content);
+                var myDeserializedClass = JsonConvert.DeserializeObject<SearchByQueryResponse>(content);
 
                 return View(myDeserializedClass);
             }
@@ -35,7 +34,6 @@ namespace FoodRecipeProvider.Controllers
             }
         }
 
-        // In RecipesController.cs
         public async Task<IActionResult> RecipeDetails(string recipeUri)
         {
             var response = await _edamamApiClient.GetRecipeDetailsAsync(recipeUri);
@@ -43,7 +41,7 @@ namespace FoodRecipeProvider.Controllers
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
-                var root = JsonConvert.DeserializeObject<Root>(content);
+                var root = JsonConvert.DeserializeObject<SearchByUriResponse>(content);
                 var recipe = root.hits.FirstOrDefault().recipe;
 
                 return View(recipe);
@@ -52,6 +50,12 @@ namespace FoodRecipeProvider.Controllers
             {
                 return View("Error");
             }
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
 

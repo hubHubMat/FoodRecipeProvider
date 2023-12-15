@@ -1,23 +1,49 @@
 ﻿@model Recipe
 
-<div class="container my-5 border-5">
+<div class="container my-5 border-5 mx-auto">
     <h1 class="display-4">@Model.label</h1>
 
 
         <div class="col-lg-6">
-            <img src="@Model.image" alt="Recipe Image" class="img-fluid mb-4" loading="lazy">
+        @if (!string.IsNullOrEmpty(Model.images.LARGE?.url))
+        {
+            <img src="@Model.images.LARGE.url" alt="Recipe Image" class="img-fluid mb-4" loading="lazy">}
+        else{<img src="@Model.images.REGULAR.url" alt="Recipe Image" class="img-fluid mb-4" loading="lazy">}
         </div>
 
         <div class="col-lg-6">
-            <div class="mb-4">
-                <h2>Ingredients</h2>
-                <ul class="list-group">
-                    @foreach (var ingredient in Model.ingredients)
+        <div class="mb-4">
+            <h2>Ingredients</h2>
+            <div class="row">
+                <ul class="list-group col-md-6">
+                    @foreach (var ingredient in Model.ingredients.Take(Model.ingredients.Count / 2))
                     {
-                        <li class="list-group-item">@ingredient.text</li>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-2">
+                                    <img src="@ingredient.image" alt="Recipe Image" class="img-fluid mb-4" loading="lazy">
+                                </div>
+                                <div class="col-10">@ingredient.text</div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+                <ul class="list-group col-md-6">
+                    @foreach (var ingredient in Model.ingredients.Skip(Model.ingredients.Count / 2))
+                    {
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-2">
+                                    <img src="@ingredient.image" alt="Recipe Image" class="img-fluid mb-4" loading="lazy">
+                                </div>
+                                <div class="col-10">@ingredient.text</div>
+                            </div>
+                        </li>
                     }
                 </ul>
             </div>
+        </div>
+
 
             <div>
                 <h2>Instructions</h2>
@@ -28,6 +54,5 @@
                     }
                 </ol>
             </div>
-
     </div>
 </div>
