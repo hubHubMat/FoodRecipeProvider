@@ -1,5 +1,6 @@
 ﻿using FoodRecipeProvider.Data;
 using FoodRecipeProvider.Models;
+using FoodRecipeProvider.Models.DbModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -34,18 +35,15 @@ namespace FoodRecipeProvider.Controllers
         [HttpPost]
         public IActionResult Preferences(UserPreferencesViewModel viewModel)
         {
-            // Get the current user's ID
+
             string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            // Get the existing preferences for the user
             var existingPreferences = _context.UserCuisineTypes
                 .Where(uct => uct.UserId == userId)
                 .ToList();
 
-            // Loop through the selected cuisine types in the view model
             foreach (string cuisineType in viewModel.SelectedCuisineTypes)
             {
-                // Check if the user already has a preference for this cuisine type
                 var existingPreference = existingPreferences
                     .FirstOrDefault(uct => uct.CuisineName == cuisineType);
 

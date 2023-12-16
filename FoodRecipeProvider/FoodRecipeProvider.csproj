@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <Folder Include="API\" />
-    <Folder Include="Models\DbModels\" />
   </ItemGroup>
 
 </Project>
