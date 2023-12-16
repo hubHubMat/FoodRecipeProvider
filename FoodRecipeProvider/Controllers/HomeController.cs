@@ -75,6 +75,60 @@ namespace FoodRecipeProvider.Controllers
             return RedirectToAction("Preferences", "Home");
         }
 
+        public IActionResult HealthLabels()
+        {
+            var viewModel = new UserHealthLabelsViewModel
+            {
+                AvailableHealthLabels = Enum.GetNames(typeof(HealthLabelEnum)).ToList()
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult HealthLabels(UserHealthLabelsViewModel viewModel)
+        {
+            // Get the current user's ID
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            // Get the existing preferences for the user
+            var existingPreferences = _context.UserHealthLabels
+                .Where(uct => uct.UserId == userId)
+                .ToList();
+
+            // Loop through the selected cuisine types in the view model
+            foreach (string healthLabel in viewModel.SelectedHealthLabels)
+            {
+                // Check if the user already has a preference for this cuisine type
+                var existingPreference = existingPreferences
+                    .FirstOrDefault(uct => uct.HealthLabelName == healthLabel);
+
+                if (existingPreference == null)
+                {
+                    // If not, add a new UserCuisineType
+                    var userHealthLabel = new UserHealthLabel
+                    {
+                        UserId = userId,
+                        HealthLabelName = healthLabel
+                    };
+
+                    _context.UserHealthLabels.Add(userHealthLabel);
+                }
+                // Remove the cuisine type from the existing preferences list
+                else
+                {
+                    existingPreferences.Remove(existingPreference);
+                }
+            }
+
+            // Remove any remaining cuisine types that were unchecked
+            _context.UserHealthLabels.RemoveRange(existingPreferences);
+
+            _context.SaveChanges();
+
+            return RedirectToAction("HealthLabels", "Home");
+        }
+
 
 
 

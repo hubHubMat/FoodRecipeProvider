@@ -19,6 +19,7 @@ namespace  FoodRecipeProvider.Areas.Identity.Pages.Account.Manage
         /// </summary>
         public static string Index => "Index";
         public static string FoodPreferences => "FoodPreferences";
+        public static string HealthLabels => "HealthLabels";
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -68,6 +69,7 @@ namespace  FoodRecipeProvider.Areas.Identity.Pages.Account.Manage
         /// </summary>
         public static string IndexNavClass(ViewContext viewContext) => PageNavClass(viewContext, Index);
         public static string FoodPreferencesNavClass(ViewContext viewContext) => PageNavClass(viewContext, FoodPreferences);
+        public static string HealthLabelsNavClass(ViewContext viewContext) => PageNavClass(viewContext, HealthLabels);
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used

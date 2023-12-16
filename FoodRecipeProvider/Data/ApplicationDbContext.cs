@@ -12,6 +12,7 @@ namespace FoodRecipeProvider.Data
         
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<UserCuisineType> UserCuisineTypes { get; set; }
+        public DbSet<UserHealthLabel> UserHealthLabels { get; set; }
 /*        public DbSet<UserPreferences> UserPreferences { get; set; }
         public DbSet<MealType> MealTypes { get; set; }
         public DbSet<CuisineType> CuisineTypes { get; set; }

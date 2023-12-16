@@ -1,0 +1,15 @@
+﻿@model UserHealthLabelsViewModel
+
+<form method="post" asp-action="HealthLabels">
+    <h2>Select Your Health Labels</h2>
+
+    @foreach (var healthLabel in Model.AvailableHealthLabels)
+    {
+        <div>
+            <input class="form-check-input" type="checkbox" name="SelectedHealthLabels" value="@healthLabel" />
+            <label class="form-check-label">@healthLabel</label>
+        </div>
+
+    }
+    <button type="submit">Save Preferences</button>
+</form>
