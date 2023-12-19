@@ -1,4 +1,5 @@
-﻿namespace FoodRecipeProvider.Models.DbModels
+﻿
+namespace FoodRecipeProvider.Models
 {
     public class UserPreferencesViewModel
     {

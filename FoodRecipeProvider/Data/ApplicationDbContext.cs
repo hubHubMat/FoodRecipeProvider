@@ -4,6 +4,7 @@ using Microsoft.Identity.Client;
 using FoodRecipeProvider.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Reflection.Emit;
+using FoodRecipeProvider.Models.Models;
 
 namespace FoodRecipeProvider.Data
 {
@@ -13,6 +14,7 @@ namespace FoodRecipeProvider.Data
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<UserCuisineType> UserCuisineTypes { get; set; }
         public DbSet<UserHealthLabel> UserHealthLabels { get; set; }
+        public DbSet<UserRecipeRating> UserRecipeRating { get; set; }
 /*        public DbSet<UserPreferences> UserPreferences { get; set; }
         public DbSet<MealType> MealTypes { get; set; }
         public DbSet<CuisineType> CuisineTypes { get; set; }

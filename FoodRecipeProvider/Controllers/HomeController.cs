@@ -1,10 +1,7 @@
 ﻿using FoodRecipeProvider.Data;
 using FoodRecipeProvider.Models;
-using FoodRecipeProvider.Models.DbModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Diagnostics;
 using System.Security.Claims;
 
 namespace FoodRecipeProvider.Controllers

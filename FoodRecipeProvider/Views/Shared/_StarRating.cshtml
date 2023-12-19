@@ -1,0 +1,55 @@
+﻿@model int
+
+<div class="star-rating" data-rating="@Model">
+    @for (int i = 1; i <= 5; i++)
+    {
+        <span class="star" data-value="@i">&#9733;</span>
+    }
+</div>
+
+<style>
+    .star-rating {
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .star {
+        color: #ccc;
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+        .star.active {
+            color: #fdd835; /* Active star color, you can change this */
+        }
+</style>
+
+<script>
+    $(document).ready(function () {
+        $('.star-rating .star').hover(
+            function () {
+                var value = $(this).data('value');
+                highlightStars(value);
+            },
+            function () {
+                var rating = $('.star-rating').data('rating');
+                highlightStars(rating);
+            }
+        );
+
+        $('.star-rating .star').click(function () {
+            var value = $(this).data('value');
+            $('.star-rating').data('rating', value);
+            highlightStars(value);
+
+            // You can also send an AJAX request to update the rating in the backend
+            // and handle the server response accordingly
+            // Example: $.post('/Recipe/Rate', { recipeId: 123, rating: value });
+        });
+
+        function highlightStars(value) {
+            $('.star-rating .star').removeClass('active');
+            $('.star-rating .star:lt(' + value + ')').addClass('active');
+        }
+    });
+</script>
