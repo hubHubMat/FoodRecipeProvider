@@ -1,0 +1,19 @@
+﻿@page
+@model SelectCuisineTypesModel
+@{
+}
+<form id="select-cuisine-types-form" method="post">
+    <h4>Select your favorite cuisine types</h4>
+
+        @foreach (var cuisineType in Model.AvailableCuisineTypes)
+        {
+        <div class="form-check checkbox-element">
+                <input class="form-check-input" type="checkbox" name="SelectedCuisineTypes" value="@cuisineType" />
+                <label class="form-check-label">@cuisineType</label>
+            </div>
+        }
+
+    <div class="mt-3">
+        <button class="btn btn-primary" type="submit">Save</button>
+    </div>
+</form>

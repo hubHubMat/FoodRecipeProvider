@@ -23,6 +23,7 @@ namespace FoodRecipeProvider.Models
     public class Links
     {
         public Self self { get; set; }
+        public Next next { get; set; }
     }
 
     
@@ -35,8 +36,12 @@ namespace FoodRecipeProvider.Models
     }
 
     
-
     public class Self
+    {
+        public string title { get; set; }
+        public string href { get; set; }
+    } 
+    public class Next
     {
         public string title { get; set; }
         public string href { get; set; }

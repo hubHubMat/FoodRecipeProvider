@@ -18,5 +18,155 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    color:#331A00 ;
 }
+nav {
+    border: 3px solid rgba(164,45,23,0.23);
+    background-color: rgba(164,45,23,0.23);
+    border-radius: 20px;
+    font-family: Georgia, serif;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    color: #331A00;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+}
+.center {
+    border: 5px solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+}
+#loginPartial {
+    
+}
+#mainBody {
+    border: 3px solid rgba(164,45,23,0.23);
+    border-radius: 20px;
+    background-color: white;
+    margin-top: 50px;
+}
+#mainRow{
+    margin-top: 50px;
+}
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.product-tile {
+    border: 1px solid #ccc;
+    margin: 10px;
+    width: calc(30% - 20px); /* Adjust the width as needed */
+    box-sizing: border-box;
+}
+
+.clickable-tile {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.product-tile.selected {
+    background-color: lightblue; /* Change background color on selection */
+}
+.recipe-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.recipe-item {
+    width: calc(33.333% - 20px);
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+    .recipe-image img {
+        width: 100%;
+        height: auto;
+    }
+
+.recipe-info {
+    padding: 15px;
+}
+
+.recipe-title {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.recipe-ingredient {
+    margin: 10px 0 20px;
+    font-size: 1rem;
+    color: #666;
+}
+
+.recipe-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.recipe-button:hover {
+    background-color: #0062cc;
+}
+
+.checkbox-element {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: 160px;
+    height: 40px;
+    border: 2px solid #9da19f;
+    border-radius: 10px;
+    background-color: #dedede;
+}
+
+    .checkbox-element input[type=checkbox] {
+        position: absolute;
+        left: 20%;
+        z-index: 1;
+        opacity: 1;
+        cursor: pointer;
+    }
+
+    .checkbox-element label {
+        margin-left: 10px;
+        font-size: 16px;
+        line-height: 20px;
+        color: #9da19f;
+        cursor: pointer;
+        position: absolute;
+        right: 10%;
+    }
+

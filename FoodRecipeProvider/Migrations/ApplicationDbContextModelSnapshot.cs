@@ -22,6 +22,27 @@ namespace FoodRecipeProvider.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("FoodRecipeProvider.Models.AppRecipe", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Label")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Uri")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Recipes");
+                });
+
             modelBuilder.Entity("FoodRecipeProvider.Models.AppUser", b =>
                 {
                     b.Property<string>("Id")
@@ -87,7 +108,7 @@ namespace FoodRecipeProvider.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("FoodRecipeProvider.Models.Models.UserRecipeRating", b =>
+            modelBuilder.Entity("FoodRecipeProvider.Models.CuisineType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -95,20 +116,626 @@ namespace FoodRecipeProvider.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<float>("Rate")
-                        .HasColumnType("real");
-
-                    b.Property<string>("RecipeUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserRecipeRating");
+                    b.ToTable("CuisineTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "american"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "asian"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "british"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "caribbean"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "central europe"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "chinese"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "eastern europe"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "french"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "greek"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "indian"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "italian"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Name = "japanese"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Name = "korean"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Name = "kosher"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Name = "mediterranean"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Name = "mexican"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Name = "middle eastern"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Name = "nordic"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Name = "south american"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Name = "south east asian"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Name = "world"
+                        });
+                });
+
+            modelBuilder.Entity("FoodRecipeProvider.Models.DietLabel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DietLabels");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "balanced"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "high-fiber"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "high-protein"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "low-carb"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "low-fat"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "low-sodium"
+                        });
+                });
+
+            modelBuilder.Entity("FoodRecipeProvider.Models.DishType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DishTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "alcohol cocktail"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "biscuits and cookies"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "bread"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "cereals"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "condiments and sauces"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "desserts"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "drinks"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "egg"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "ice cream and custard"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "main course"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "pancake"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Name = "pasta"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Name = "pastry"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Name = "pies and tarts"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Name = "pizza"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Name = "preps"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Name = "preserve"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Name = "salad"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Name = "sandwiches"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Name = "seafood"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Name = "side dish"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Name = "soup"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Name = "special occasions"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Name = "starter"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Name = "sweets"
+                        });
+                });
+
+            modelBuilder.Entity("FoodRecipeProvider.Models.HealthLabel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("HealthLabels");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "alcohol-cocktail"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "alcohol-free"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "celery-free"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "crustcean-free"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "dairy-free"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "dash"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "egg-free"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "fish-free"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "fodmap-free"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "gluten-free"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "immuno-supportive"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Name = "keto-friendly"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Name = "kidney-friendly"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Name = "fosher"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Name = "low Potassium"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Name = "low Sugar"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Name = "lupine-Free"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Name = "mediterranean"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Name = "mollusk-Free"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Name = "mustard-Free"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Name = "no oil added"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Name = "paleo"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Name = "peanut-free"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Name = "pescatarian"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Name = "pork-free"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Name = "red-meat-free"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Name = "sesame-free"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            Name = "shellfish-free"
+                        },
+                        new
+                        {
+                            Id = 29,
+                            Name = "soy-free"
+                        },
+                        new
+                        {
+                            Id = 30,
+                            Name = "sugar-conscious"
+                        },
+                        new
+                        {
+                            Id = 31,
+                            Name = "sulfite-free"
+                        },
+                        new
+                        {
+                            Id = 32,
+                            Name = "sree-nut-free"
+                        },
+                        new
+                        {
+                            Id = 33,
+                            Name = "vegan"
+                        },
+                        new
+                        {
+                            Id = 34,
+                            Name = "vegetarian"
+                        },
+                        new
+                        {
+                            Id = 35,
+                            Name = "wheat-free"
+                        });
+                });
+
+            modelBuilder.Entity("FoodRecipeProvider.Models.MealType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MealTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "breakfast"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "brunch"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "lunch/dinner"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "snack"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "teatime"
+                        });
+                });
+
+            modelBuilder.Entity("FoodRecipeProvider.Models.RecipeCuisineTypes", b =>
+                {
+                    b.Property<int>("AppRecipeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CuisineTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AppRecipeId", "CuisineTypeId");
+
+                    b.HasIndex("CuisineTypeId");
+
+                    b.ToTable("RecipeCuisineTypes");
+                });
+
+            modelBuilder.Entity("FoodRecipeProvider.Models.RecipeDietLabels", b =>
+                {
+                    b.Property<int>("AppRecipeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DietLabelId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AppRecipeId", "DietLabelId");
+
+                    b.HasIndex("DietLabelId");
+
+                    b.ToTable("RecipeDietLabels");
+                });
+
+            modelBuilder.Entity("FoodRecipeProvider.Models.RecipeDishTypes", b =>
+                {
+                    b.Property<int>("AppRecipeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DishTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AppRecipeId", "DishTypeId");
+
+                    b.HasIndex("DishTypeId");
+
+                    b.ToTable("RecipeDishTypes");
+                });
+
+            modelBuilder.Entity("FoodRecipeProvider.Models.RecipeHealthLabels", b =>
+                {
+                    b.Property<int>("AppRecipeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HealthLabelId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AppRecipeId", "HealthLabelId");
+
+                    b.HasIndex("HealthLabelId");
+
+                    b.ToTable("RecipeHealthLabels");
+                });
+
+            modelBuilder.Entity("FoodRecipeProvider.Models.RecipeMealTypes", b =>
+                {
+                    b.Property<int>("AppRecipeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MealTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AppRecipeId", "MealTypeId");
+
+                    b.HasIndex("MealTypeId");
+
+                    b.ToTable("RecipeMealTypes");
                 });
 
             modelBuilder.Entity("FoodRecipeProvider.Models.UserCuisineType", b =>
@@ -132,6 +759,27 @@ namespace FoodRecipeProvider.Migrations
                     b.ToTable("UserCuisineTypes");
                 });
 
+            modelBuilder.Entity("FoodRecipeProvider.Models.UserDietLabel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("DietLabelName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserDietLabels");
+                });
+
             modelBuilder.Entity("FoodRecipeProvider.Models.UserHealthLabel", b =>
                 {
                     b.Property<int>("Id")
@@ -151,6 +799,33 @@ namespace FoodRecipeProvider.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UserHealthLabels");
+                });
+
+            modelBuilder.Entity("FoodRecipeProvider.Models.UserRecipeRate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AppRecipeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<double>("Rate")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppRecipeId");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("UserRecipeRates");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -290,6 +965,120 @@ namespace FoodRecipeProvider.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("FoodRecipeProvider.Models.RecipeCuisineTypes", b =>
+                {
+                    b.HasOne("FoodRecipeProvider.Models.AppRecipe", "Recipe")
+                        .WithMany("RecipeCuisineTypes")
+                        .HasForeignKey("AppRecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FoodRecipeProvider.Models.CuisineType", "CuisineType")
+                        .WithMany("RecipeCuisineTypes")
+                        .HasForeignKey("CuisineTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CuisineType");
+
+                    b.Navigation("Recipe");
+                });
+
+            modelBuilder.Entity("FoodRecipeProvider.Models.RecipeDietLabels", b =>
+                {
+                    b.HasOne("FoodRecipeProvider.Models.AppRecipe", "AppRecipe")
+                        .WithMany("RecipeDietLabels")
+                        .HasForeignKey("AppRecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FoodRecipeProvider.Models.DietLabel", "DietLabel")
+                        .WithMany("RecipeDietLabels")
+                        .HasForeignKey("DietLabelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppRecipe");
+
+                    b.Navigation("DietLabel");
+                });
+
+            modelBuilder.Entity("FoodRecipeProvider.Models.RecipeDishTypes", b =>
+                {
+                    b.HasOne("FoodRecipeProvider.Models.AppRecipe", "AppRecipe")
+                        .WithMany("RecipeDishTypes")
+                        .HasForeignKey("AppRecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FoodRecipeProvider.Models.DishType", "DishType")
+                        .WithMany("RecipeDishTypes")
+                        .HasForeignKey("DishTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppRecipe");
+
+                    b.Navigation("DishType");
+                });
+
+            modelBuilder.Entity("FoodRecipeProvider.Models.RecipeHealthLabels", b =>
+                {
+                    b.HasOne("FoodRecipeProvider.Models.AppRecipe", "AppRecipe")
+                        .WithMany("RecipeHealthLabels")
+                        .HasForeignKey("AppRecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FoodRecipeProvider.Models.HealthLabel", "HealthLabel")
+                        .WithMany("RecipeHealthLabels")
+                        .HasForeignKey("HealthLabelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppRecipe");
+
+                    b.Navigation("HealthLabel");
+                });
+
+            modelBuilder.Entity("FoodRecipeProvider.Models.RecipeMealTypes", b =>
+                {
+                    b.HasOne("FoodRecipeProvider.Models.AppRecipe", "AppRecipe")
+                        .WithMany("RecipeMealTypes")
+                        .HasForeignKey("AppRecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FoodRecipeProvider.Models.MealType", "MealType")
+                        .WithMany("RecipeMealTypes")
+                        .HasForeignKey("MealTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppRecipe");
+
+                    b.Navigation("MealType");
+                });
+
+            modelBuilder.Entity("FoodRecipeProvider.Models.UserRecipeRate", b =>
+                {
+                    b.HasOne("FoodRecipeProvider.Models.AppRecipe", "AppRecipe")
+                        .WithMany()
+                        .HasForeignKey("AppRecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FoodRecipeProvider.Models.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppRecipe");
+
+                    b.Navigation("AppUser");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -339,6 +1128,44 @@ namespace FoodRecipeProvider.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("FoodRecipeProvider.Models.AppRecipe", b =>
+                {
+                    b.Navigation("RecipeCuisineTypes");
+
+                    b.Navigation("RecipeDietLabels");
+
+                    b.Navigation("RecipeDishTypes");
+
+                    b.Navigation("RecipeHealthLabels");
+
+                    b.Navigation("RecipeMealTypes");
+                });
+
+            modelBuilder.Entity("FoodRecipeProvider.Models.CuisineType", b =>
+                {
+                    b.Navigation("RecipeCuisineTypes");
+                });
+
+            modelBuilder.Entity("FoodRecipeProvider.Models.DietLabel", b =>
+                {
+                    b.Navigation("RecipeDietLabels");
+                });
+
+            modelBuilder.Entity("FoodRecipeProvider.Models.DishType", b =>
+                {
+                    b.Navigation("RecipeDishTypes");
+                });
+
+            modelBuilder.Entity("FoodRecipeProvider.Models.HealthLabel", b =>
+                {
+                    b.Navigation("RecipeHealthLabels");
+                });
+
+            modelBuilder.Entity("FoodRecipeProvider.Models.MealType", b =>
+                {
+                    b.Navigation("RecipeMealTypes");
                 });
 #pragma warning restore 612, 618
         }

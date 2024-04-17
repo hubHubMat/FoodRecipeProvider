@@ -1,0 +1,65 @@
+﻿@page
+@model PreferencesModel
+@{
+    ViewData["Title"] = "Your Preferences";
+}
+
+<div class="p-4">
+<h4>Your cuisine types:</h4>
+@if (Model.ExistingCuisineTypes != null && Model.ExistingCuisineTypes.Any())
+{
+    <ul>
+        @foreach (var cuisineType in Model.ExistingCuisineTypes)
+        {
+            <li>@cuisineType.CuisineName</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No favorite cuisines set.</p>
+}
+
+<a href="SelectCuisineTypes" class="w-auto btn btn btn-primary">Update cuisine types</a>
+
+</div>
+
+<div class ="p-4">
+<h4>Your health labels:</h4>
+@if (Model.ExistingHealthLabels != null && Model.ExistingHealthLabels.Any())
+{
+    <ul>
+        @foreach (var healthLabel in Model.ExistingHealthLabels)
+        {
+            <li>@healthLabel.HealthLabelName</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No health options set.</p>
+}
+
+<a href="SelectDietLabels" class="w-auto btn btn btn-primary">Update health labels</a>
+
+</div>
+
+<div class="p-4">
+    <h4>Your diet labels:</h4>
+    @if (Model.ExistingDietLabels != null && Model.ExistingDietLabels.Any())
+    {
+        <ul>
+            @foreach (var dietLabel in Model.ExistingDietLabels)
+            {
+                <li>@dietLabel.DietLabelName</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No diet options set.</p>
+    }
+
+    <a href="SelectDietLabels" class="w-auto btn btn btn-primary">Update diet labels</a>
+
+</div>

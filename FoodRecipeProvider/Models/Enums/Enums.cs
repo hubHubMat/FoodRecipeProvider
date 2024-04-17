@@ -1,5 +1,7 @@
-﻿namespace FoodRecipeProvider.Models
-{
+﻿using System.Reflection;
+
+namespace FoodRecipeProvider.Models { 
+
     public enum CuisineTypeEnum
     {
         American,
@@ -24,7 +26,7 @@
         South_east_asian,
         World
     }
-
+ 
     public enum MealTypeEnum
     {
         Breakfast,

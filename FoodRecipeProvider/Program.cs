@@ -7,6 +7,7 @@ using FoodRecipeProvider.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 var configuration = new ConfigurationBuilder()
     .SetBasePath(builder.Environment.ContentRootPath)
     .AddJsonFile("appsettings.json")

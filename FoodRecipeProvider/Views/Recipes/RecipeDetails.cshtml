@@ -1,58 +1,102 @@
-﻿@model Recipe
+﻿<div class="container my-5 recipe-details">
+    <div class="row">
+        <div class="col-lg-7 recipe-info">
+            <h1>@Model.label</h1>
 
-<div class="container my-5 border-5 mx-auto">
-    <h1 class="display-4">@Model.label</h1>
+            @if (!string.IsNullOrEmpty(Model.images.LARGE?.url))
+            {
+                <img src="@Model.images.LARGE.url" alt="Recipe Image" class="recipe-image img-fluid mb-4" loading="lazy">
+            }
+            else
+            {
+                <img src="@Model.images.REGULAR.url" alt="Recipe Image" class="recipe-image img-fluid mb-4" loading="lazy">
+            }
 
+            @if (Model.ingredientLines != null)
+            {
+                <div class="ingredients">
+                    <h2>Ingredients</h2>
+                    <ol class="list-group list-group-numbered">
+                        @foreach (var ingredient in Model.ingredientLines)
+                        {
+                            <li class="list-group-item">@ingredient</li>
+                        }
+                    </ol>
+                </div>
+            }
 
-        <div class="col-lg-6">
-        @if (!string.IsNullOrEmpty(Model.images.LARGE?.url))
-        {
-            <img src="@Model.images.LARGE.url" alt="Recipe Image" class="img-fluid mb-4" loading="lazy">}
-        else{<img src="@Model.images.REGULAR.url" alt="Recipe Image" class="img-fluid mb-4" loading="lazy">}
+            @if (Model.instructionLines != null)
+            {
+                <div class="instructions">
+                    <h2>Instructions</h2>
+                    <ol class="list-group list-group-numbered">
+                        @foreach (var instruction in Model.instructionLines)
+                        {
+                            <li class="list-group-item">@instruction</li>
+                        }
+                    </ol>
+                </div>
+            }
         </div>
 
-        <div class="col-lg-6">
-        <div class="mb-4">
-            <h2>Ingredients</h2>
-            <div class="row">
-                <ul class="list-group col-md-6">
-                    @foreach (var ingredient in Model.ingredients.Take(Model.ingredients.Count / 2))
+        <div class="col-lg-5 rate-recipe">
+            <h2>Rate this Recipe</h2>
+            <form method="post" action="@Url.Action("RateRecipe", "Recipes")">
+                <!-- Star-based rating system -->
+                <div class="form-group">
+                    @for (int i = 1; i <= 5; i++)
                     {
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-2">
-                                    <img src="@ingredient.image" alt="Recipe Image" class="img-fluid mb-4" loading="lazy">
-                                </div>
-                                <div class="col-10">@ingredient.text</div>
-                            </div>
-                        </li>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input star-input" type="radio" name="rating" id="rating@(i)" value="@i">
+                            <label class="form-check-label star-label" for="rating@(i)">
+                                <i class="fas fa-star"></i>
+                            </label>
+                        </div>
                     }
-                </ul>
-                <ul class="list-group col-md-6">
-                    @foreach (var ingredient in Model.ingredients.Skip(Model.ingredients.Count / 2))
-                    {
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-2">
-                                    <img src="@ingredient.image" alt="Recipe Image" class="img-fluid mb-4" loading="lazy">
-                                </div>
-                                <div class="col-10">@ingredient.text</div>
-                            </div>
-                        </li>
-                    }
-                </ul>
-            </div>
+                </div>
+                <input type="hidden" name="recipeUri" value="@Model.uri" />
+                <button type="submit" class="btn btn-primary">Submit Rating</button>
+            </form>
         </div>
-
-
-            <div>
-                <h2>Instructions</h2>
-                <ol class="list-group">
-                    @foreach (var instruction in Model.instructionLines)
-                    {
-                        <li class="list-group-item">@instruction</li>
-                    }
-                </ol>
-            </div>
     </div>
 </div>
+
+<!-- Add Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/64b696c56d.js" crossorigin="anonymous"></script>
+
+<style>
+    /* Style the star-based rating system */
+    .star-input {
+        display: none;
+    }
+
+    .star-label {
+        color: #ccc;
+        transition: color 0.2s;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .star-input:checked ~ .star-label {
+        color: #ffc107;
+    }
+</style>
+
+<script>
+    // Add event listeners to the stars
+    const starInputs = document.querySelectorAll('.star-input');
+    const starLabels = document.querySelectorAll('.star-label');
+
+    starLabels.forEach((label, index) => {
+        label.addEventListener('click', () => {
+            let selectedRating = index + 1;
+            starInputs.forEach((input, i) => {
+                if (i < selectedRating) {
+                    input.checked = true;
+                } else {
+                    input.checked = false;
+                }
+            });
+        });
+    });
+</script>

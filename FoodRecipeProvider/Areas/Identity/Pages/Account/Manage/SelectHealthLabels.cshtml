@@ -1,0 +1,19 @@
+﻿@page
+@model SelectHealthLabelsModel
+@{
+}
+<form id="select-health-labels-form" method="post">
+    <h2>Select your favorite health labels</h2>
+
+    @foreach (var healthLabel in Model.AvailableHealthLabels)
+    {
+        <div class="checkbox-element">
+            <input class="form-check-input" type="checkbox" name="SelectedHealthLabels" value="@healthLabel" />
+            <label class="form-check-label">@healthLabel</label>
+        </div>
+    }
+
+    <div class="mt-3">
+        <button class="btn btn-primary" type="submit">Save</button>
+    </div>
+</form>

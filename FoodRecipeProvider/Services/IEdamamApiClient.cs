@@ -1,8 +1,9 @@
-﻿namespace FoodRecipeProvider.Services
+﻿using FoodRecipeProvider.Models;
+namespace FoodRecipeProvider.Services
 {
     public interface IEdamamApiClient
     {
-        Task<HttpResponseMessage> GetRecipesAsync(string query);
+        Task<HttpResponseMessage> GetRecipesAsync(SearchTags query);
         Task<HttpResponseMessage> GetRecipeDetailsAsync(string apiUrl);
     }
 
