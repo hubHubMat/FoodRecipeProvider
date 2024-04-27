@@ -18,6 +18,14 @@
         public Links _links { get; set; }
         public List<Hit> hits { get; set; }
     }
+    public class SearchByUrisResponse
+    {
+        public int from { get; set; }
+        public int to { get; set; }
+        public int count { get; set; }
+        public Links _links { get; set; }
+        public List<Hit> hits { get; set; }
+    }
     public class SearchTags
     {
         public string? keyword { get; set; }

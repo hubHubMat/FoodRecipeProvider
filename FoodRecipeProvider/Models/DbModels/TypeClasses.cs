@@ -15,13 +15,13 @@ namespace FoodRecipeProvider.Models
         {
             public int Id { get; set; }
             public string Name { get; set; }
-            public ICollection<RecipeMealTypes> RecipeMealTypes { get; set; } = new List<RecipeMealTypes>();
+/*            public ICollection<RecipeMealTypes> RecipeMealTypes { get; set; } = new List<RecipeMealTypes>();*/
          }
         public class DishType
         {
             public int Id { get; set; }
             public string Name { get; set; }
-            public ICollection<RecipeDishTypes> RecipeDishTypes { get; set; } = new List<RecipeDishTypes>();
+/*            public ICollection<RecipeDishTypes> RecipeDishTypes { get; set; } = new List<RecipeDishTypes>();*/
         }
         public class HealthLabel
         {
@@ -33,7 +33,13 @@ namespace FoodRecipeProvider.Models
         {
             public int Id { get; set; }
             public string Name { get; set; }
-         public ICollection<RecipeDietLabels> RecipeDietLabels { get; set; } = new List<RecipeDietLabels>();
+            public ICollection<RecipeDietLabels> RecipeDietLabels { get; set; } = new List<RecipeDietLabels>();
+        }
+        public class IngredientDb
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public ICollection<RecipeIngredient> RecipeIngredients { get; set; } = new List<RecipeIngredient>();
         }
 
     }

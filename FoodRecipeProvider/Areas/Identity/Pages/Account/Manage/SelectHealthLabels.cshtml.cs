@@ -3,30 +3,36 @@ using FoodRecipeProvider.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace FoodRecipeProvider.Areas.Identity.Pages.Account.Manage
 {
     public class SelectHealthLabelsModel : PageModel
     {
-        private readonly ILogger<SelectCuisineTypesModel> _logger;
+        private readonly ILogger<SelectHealthLabelsModel> _logger;
         private readonly ApplicationDbContext _context;
         private readonly UserManager<AppUser> _userManager;
 
-        public SelectHealthLabelsModel(ILogger<SelectCuisineTypesModel> logger, ApplicationDbContext applicationDbContext, UserManager<AppUser> userManager)
+        public SelectHealthLabelsModel(ILogger<SelectHealthLabelsModel> logger, ApplicationDbContext context, UserManager<AppUser> userManager)
         {
             _logger = logger;
-            _context = applicationDbContext;
+            _context = context;
             _userManager = userManager;
         }
 
         [BindProperty]
-        public List<string>? SelectedHealthLabels { get; set; }
-        public List<string>? AvailableHealthLabels { get; set; }
+        public List<int>? SelectedHealthLabelIds { get; set; }
+        public List<HealthLabel> AvailableHealthLabels { get; set; } = new List<HealthLabel>();
 
-        public IActionResult OnGet()
+        public async Task<IActionResult> OnGetAsync()
         {
-
-            AvailableHealthLabels = Enum.GetNames(typeof(HealthLabelEnum)).ToList();
+            // Load available health labels from the database
+            AvailableHealthLabels = await _context.HealthLabels.ToListAsync();
 
             return Page();
         }
@@ -38,38 +44,56 @@ namespace FoodRecipeProvider.Areas.Identity.Pages.Account.Manage
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
+
+            // Get the user ID
             var userId = await _userManager.GetUserIdAsync(user);
 
-            var existingPreferences = _context.UserHealthLabels
-                .Where(uct => uct.UserId == userId)
-                .ToList();
-            if (SelectedHealthLabels != null && SelectedHealthLabels.Any())
-                foreach (string healthLabel in SelectedHealthLabels)
+            try
+            {
+                // Retrieve existing user's health label associations
+                var existingUserHealthLabels = await _context.UserHealthLabels
+                    .Where(uhl => uhl.AppUserId == userId)
+                    .ToListAsync();
+
+                // Update user's selected health labels
+                if (SelectedHealthLabelIds != null)
                 {
-                    var existingPreference = existingPreferences
-                        .FirstOrDefault(uct => uct.HealthLabelName == healthLabel);
+                    var selectedHealthLabelIdsSet = new HashSet<int>(SelectedHealthLabelIds);
 
-                    if (existingPreference == null)
+                    // Add new associations
+                    foreach (var healthLabelId in selectedHealthLabelIdsSet)
                     {
-                        var userHealthLabel = new UserHealthLabel
+                        if (!existingUserHealthLabels.Any(uhl => uhl.HealthLabelId == healthLabelId))
                         {
-                            UserId = userId,
-                            HealthLabelName = healthLabel
-                        };
+                            var newUserHealthLabel = new UserHealthLabel
+                            {
+                                AppUserId = userId,
+                                HealthLabelId = healthLabelId
+                            };
+                            _context.UserHealthLabels.Add(newUserHealthLabel);
+                        }
+                    }
 
-                        _context.UserHealthLabels.Add(userHealthLabel);
-                    }
-                    else
+                    // Remove associations that are not selected anymore
+                    foreach (var existingUserHealthLabel in existingUserHealthLabels)
                     {
-                        existingPreferences.Remove(existingPreference);
+                        if (!selectedHealthLabelIdsSet.Contains(existingUserHealthLabel.HealthLabelId))
+                        {
+                            _context.UserHealthLabels.Remove(existingUserHealthLabel);
+                        }
                     }
+
+                    // Save changes to the database
+                    await _context.SaveChangesAsync();
                 }
 
-            _context.UserHealthLabels.RemoveRange(existingPreferences);
-
-            _context.SaveChanges();
-
-            return RedirectToPage("Preferences");
+                return RedirectToPage("Preferences"); // Redirect to preferences page after successful update
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while updating user's health labels.");
+                throw; // You may want to handle this more gracefully
+            }
         }
     }
 }

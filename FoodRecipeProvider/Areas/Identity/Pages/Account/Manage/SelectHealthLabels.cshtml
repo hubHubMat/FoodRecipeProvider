@@ -1,15 +1,15 @@
 ﻿@page
 @model SelectHealthLabelsModel
-@{
-}
+
 <form id="select-health-labels-form" method="post">
     <h2>Select your favorite health labels</h2>
 
-    @foreach (var healthLabel in Model.AvailableHealthLabels)
+    @for (var i = 0; i < Model.AvailableHealthLabels.Count; i++)
     {
         <div class="checkbox-element">
-            <input class="form-check-input" type="checkbox" name="SelectedHealthLabels" value="@healthLabel" />
-            <label class="form-check-label">@healthLabel</label>
+            <input class="form-check-input" type="checkbox" name="SelectedHealthLabelIds" value="@Model.AvailableHealthLabels[i].Id"
+            @(Model.SelectedHealthLabelIds != null && Model.SelectedHealthLabelIds.Contains(Model.AvailableHealthLabels[i].Id) ? "checked" : "") />
+            <label class="form-check-label">@Model.AvailableHealthLabels[i].Name</label>
         </div>
     }
 

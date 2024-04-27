@@ -8,6 +8,7 @@
         public ICollection<RecipeCuisineTypes> RecipeCuisineTypes { get; set; } = new List<RecipeCuisineTypes>();
         public ICollection<RecipeHealthLabels> RecipeHealthLabels { get; set; } = new List<RecipeHealthLabels>();
         public ICollection<RecipeDietLabels> RecipeDietLabels { get; set; } = new List<RecipeDietLabels>();
+        public ICollection<RecipeIngredient> RecipeIngredients { get; set; } = new List<RecipeIngredient>();
 
 
     }

@@ -1,12 +1,14 @@
-﻿using FoodRecipeProvider.Services;
-using Microsoft.AspNetCore.Mvc;
-using FoodRecipeProvider.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Diagnostics;
-using FoodRecipeProvider.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using FoodRecipeProvider.Services;
+using FoodRecipeProvider.Models;
+using FoodRecipeProvider.Data;
+using Azure;
+
 
 namespace FoodRecipeProvider.Controllers
 {
@@ -14,29 +16,53 @@ namespace FoodRecipeProvider.Controllers
     {
 
         private readonly EdamamApiClient _edamamApiClient;
+        private readonly RRSApiClient _rrsApiClient;
         private readonly ApplicationDbContext _context;
         private readonly UserManager<AppUser> _userManager;
-        public RecipesController(EdamamApiClient edamamApiClient, ApplicationDbContext applicationDbContext,
-                                UserManager<AppUser> userManager)
+        public RecipesController(EdamamApiClient edamamApiClient, RRSApiClient rrsApiClient,
+                                ApplicationDbContext applicationDbContext, UserManager<AppUser> userManager)
         {
             _edamamApiClient = edamamApiClient;
+            _rrsApiClient = rrsApiClient;
             _context = applicationDbContext;
             _userManager = userManager;
         }
 
         public async Task<IActionResult> Index(SearchTags query)
         {
-
-            var response = await _edamamApiClient.GetRecipesAsync(query);
-
-            if (response.IsSuccessStatusCode)
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
             {
-                var content = await response.Content.ReadAsStringAsync();
-                var myDeserializedClass = JsonConvert.DeserializeObject<SearchByQueryResponse>(content);
+                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+            }
 
+            var userId = await _userManager.GetUserIdAsync(user);
+            var recomendedRecipesResponse = await _rrsApiClient.GetRecommendedRecipes(userId);
+            List<string> recipeuris = new List<string>();
+            if (recomendedRecipesResponse != null)
+            {
+                foreach(var recipe in recomendedRecipesResponse)
+                {
+                    recipeuris.Add(recipe.RecipeUri);
+                }
+            }
+
+            var getRecipesByUrisResponse = await _edamamApiClient.GetRecipesByUrisAsync(recipeuris);
+            if(getRecipesByUrisResponse != null)
+            {
+                foreach (var a in  getRecipesByUrisResponse.hits)
+                {
+                    await Console.Out.WriteLineAsync(a.recipe.label);
+                }
+            }
+
+            var searchRecipesResponse = await _edamamApiClient.GetRecipesAsync(query);
+
+            if (searchRecipesResponse != null)
+            {
                 var model = new SearchQueryModel
                 {
-                    SearchByQueryResponse = myDeserializedClass,
+                    SearchByQueryResponse = searchRecipesResponse,
                     SearchTags = new SearchTags(),
                     AvailableDietLabels = Enum.GetNames(typeof(DietLabelEnum)).ToList(),
                     AvailableHealthLabels = Enum.GetNames(typeof(HealthLabelEnum)).ToList(),
@@ -47,79 +73,25 @@ namespace FoodRecipeProvider.Controllers
 
                 return View(model);
             }
-            else
-            {
-                return View("Error");
-            }
+            else return View("Error: Couldn't find recipes.");
+
         }
+
 
         public async Task<IActionResult> RecipeDetails(string recipeUri)
         {
-            var response = await _edamamApiClient.GetRecipeDetailsAsync(recipeUri);
-
-            if (response.IsSuccessStatusCode)
+            var responseRecipe = await _edamamApiClient.GetRecipeDetailsAsync(recipeUri);
+            if (responseRecipe != null)
             {
-                var content = await response.Content.ReadAsStringAsync();
-                var root = JsonConvert.DeserializeObject<SearchByUriResponse>(content);
-                var recipe = root.hits.FirstOrDefault().recipe;
-                var existingRecipe = await _context.Recipes
-                     .FirstOrDefaultAsync(r => r.Uri == recipe.uri);
-
-                if (existingRecipe != null)
-                {
-                    return View(recipe);
-                }
-                else
-                {
-                    AppRecipe appRecipe = new AppRecipe { Label = recipe.label, Uri = recipe.uri };
-
-                    foreach (var cuisineType in recipe.cuisineType)
-                    {
-                        var existingCuisineType = await _context.CuisineTypes
-                            .FirstOrDefaultAsync(ct => ct.Name == cuisineType);
-
-                        if (existingCuisineType == null)
-                        {
-                            existingCuisineType = new CuisineType { Name = cuisineType };
-                            _context.CuisineTypes.Add(existingCuisineType);
-                        }
-
-                        appRecipe.RecipeCuisineTypes.Add(new RecipeCuisineTypes
-                        {
-                            CuisineType = existingCuisineType
-                        });
-                    }
-
-                    foreach (var healthLabel in recipe.healthLabels)
-                    {
-                        var existingHealthLabel = await _context.HealthLabels
-                            .FirstOrDefaultAsync(ct => ct.Name == healthLabel);
-
-                        if (existingHealthLabel == null)
-                        {
-                            existingHealthLabel = new HealthLabel { Name = healthLabel };
-                            _context.HealthLabels.Add(existingHealthLabel);
-                        }
-
-                        appRecipe.RecipeHealthLabels.Add(new RecipeHealthLabels
-                        {
-                            HealthLabel = existingHealthLabel
-                        });
-                    }
-
-
-                    _context.Recipes.Add(appRecipe);
-                    await _context.SaveChangesAsync();
-
-                    return View(recipe);
-                }
-
+                return View(responseRecipe);
             }
-            else
-            {
-                return View("Error");
-            }
+            else return View("Error: Couldn't find recipe.");
         }
+
+           
+
+
+
         public async Task<IActionResult> SubmitRating(int recipeId, int rating)
         {
             string userId = _userManager.GetUserId(User);
@@ -135,12 +107,14 @@ namespace FoodRecipeProvider.Controllers
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
             var recipe = _context.Recipes.FirstOrDefault(r => r.Uri == recipeUri);
+            await Console.Out.WriteLineAsync("Rating" + rating);
 
             if (recipe != null && userId != null)
             {
                 // Check if an existing rating entry exists for the user and recipe
                 var existingRating = _context.UserRecipeRates
                     .FirstOrDefault(ur => ur.AppUserId == userId && ur.AppRecipeId == recipe.Id);
+                
 
                 if (existingRating != null)
                 {

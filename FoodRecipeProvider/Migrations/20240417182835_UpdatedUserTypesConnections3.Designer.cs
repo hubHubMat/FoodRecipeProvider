@@ -4,6 +4,7 @@ using FoodRecipeProvider.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,13 +12,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FoodRecipeProvider.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240417182835_UpdatedUserTypesConnections3")]
+    partial class UpdatedUserTypesConnections3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.18")
+                .HasAnnotation("ProductVersion", "7.0.12")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -40,7 +43,7 @@ namespace FoodRecipeProvider.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Recipes", (string)null);
+                    b.ToTable("Recipes");
                 });
 
             modelBuilder.Entity("FoodRecipeProvider.Models.AppUser", b =>
@@ -122,7 +125,7 @@ namespace FoodRecipeProvider.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CuisineTypes", (string)null);
+                    b.ToTable("CuisineTypes");
 
                     b.HasData(
                         new
@@ -246,7 +249,7 @@ namespace FoodRecipeProvider.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DietLabels", (string)null);
+                    b.ToTable("DietLabels");
 
                     b.HasData(
                         new
@@ -295,7 +298,7 @@ namespace FoodRecipeProvider.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DishTypes", (string)null);
+                    b.ToTable("DishTypes");
 
                     b.HasData(
                         new
@@ -439,7 +442,7 @@ namespace FoodRecipeProvider.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HealthLabels", (string)null);
+                    b.ToTable("HealthLabels");
 
                     b.HasData(
                         new
@@ -619,23 +622,6 @@ namespace FoodRecipeProvider.Migrations
                         });
                 });
 
-            modelBuilder.Entity("FoodRecipeProvider.Models.IngredientDb", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Ingredients", (string)null);
-                });
-
             modelBuilder.Entity("FoodRecipeProvider.Models.MealType", b =>
                 {
                     b.Property<int>("Id")
@@ -650,7 +636,7 @@ namespace FoodRecipeProvider.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MealTypes", (string)null);
+                    b.ToTable("MealTypes");
 
                     b.HasData(
                         new
@@ -692,7 +678,7 @@ namespace FoodRecipeProvider.Migrations
 
                     b.HasIndex("CuisineTypeId");
 
-                    b.ToTable("RecipeCuisineTypes", (string)null);
+                    b.ToTable("RecipeCuisineTypes");
                 });
 
             modelBuilder.Entity("FoodRecipeProvider.Models.RecipeDietLabels", b =>
@@ -707,7 +693,22 @@ namespace FoodRecipeProvider.Migrations
 
                     b.HasIndex("DietLabelId");
 
-                    b.ToTable("RecipeDietLabels", (string)null);
+                    b.ToTable("RecipeDietLabels");
+                });
+
+            modelBuilder.Entity("FoodRecipeProvider.Models.RecipeDishTypes", b =>
+                {
+                    b.Property<int>("AppRecipeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DishTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AppRecipeId", "DishTypeId");
+
+                    b.HasIndex("DishTypeId");
+
+                    b.ToTable("RecipeDishTypes");
                 });
 
             modelBuilder.Entity("FoodRecipeProvider.Models.RecipeHealthLabels", b =>
@@ -722,67 +723,85 @@ namespace FoodRecipeProvider.Migrations
 
                     b.HasIndex("HealthLabelId");
 
-                    b.ToTable("RecipeHealthLabels", (string)null);
+                    b.ToTable("RecipeHealthLabels");
                 });
 
-            modelBuilder.Entity("FoodRecipeProvider.Models.RecipeIngredient", b =>
+            modelBuilder.Entity("FoodRecipeProvider.Models.RecipeMealTypes", b =>
                 {
                     b.Property<int>("AppRecipeId")
                         .HasColumnType("int");
 
-                    b.Property<int>("IngredientId")
+                    b.Property<int>("MealTypeId")
                         .HasColumnType("int");
 
-                    b.HasKey("AppRecipeId", "IngredientId");
+                    b.HasKey("AppRecipeId", "MealTypeId");
 
-                    b.HasIndex("IngredientId");
+                    b.HasIndex("MealTypeId");
 
-                    b.ToTable("RecipeIngredients", (string)null);
+                    b.ToTable("RecipeMealTypes");
                 });
 
             modelBuilder.Entity("FoodRecipeProvider.Models.UserCuisineType", b =>
                 {
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("int");
 
                     b.Property<int>("CuisineTypeId")
                         .HasColumnType("int");
 
+                    b.Property<string>("AppUserId1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("AppUserId", "CuisineTypeId");
+
+                    b.HasIndex("AppUserId1");
 
                     b.HasIndex("CuisineTypeId");
 
-                    b.ToTable("UserCuisineTypes", (string)null);
+                    b.ToTable("UserCuisineTypes");
                 });
 
             modelBuilder.Entity("FoodRecipeProvider.Models.UserDietLabel", b =>
                 {
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("int");
 
                     b.Property<int>("DietLabelId")
                         .HasColumnType("int");
 
+                    b.Property<string>("AppUserId1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("AppUserId", "DietLabelId");
+
+                    b.HasIndex("AppUserId1");
 
                     b.HasIndex("DietLabelId");
 
-                    b.ToTable("UserDietLabels", (string)null);
+                    b.ToTable("UserDietLabels");
                 });
 
             modelBuilder.Entity("FoodRecipeProvider.Models.UserHealthLabel", b =>
                 {
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("int");
 
                     b.Property<int>("HealthLabelId")
                         .HasColumnType("int");
 
+                    b.Property<string>("AppUserId1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("AppUserId", "HealthLabelId");
+
+                    b.HasIndex("AppUserId1");
 
                     b.HasIndex("HealthLabelId");
 
-                    b.ToTable("UserHealthLabels", (string)null);
+                    b.ToTable("UserHealthLabels");
                 });
 
             modelBuilder.Entity("FoodRecipeProvider.Models.UserRecipeRate", b =>
@@ -809,7 +828,7 @@ namespace FoodRecipeProvider.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("UserRecipeRates", (string)null);
+                    b.ToTable("UserRecipeRates");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -951,7 +970,7 @@ namespace FoodRecipeProvider.Migrations
 
             modelBuilder.Entity("FoodRecipeProvider.Models.RecipeCuisineTypes", b =>
                 {
-                    b.HasOne("FoodRecipeProvider.Models.AppRecipe", "AppRecipe")
+                    b.HasOne("FoodRecipeProvider.Models.AppRecipe", "Recipe")
                         .WithMany("RecipeCuisineTypes")
                         .HasForeignKey("AppRecipeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -963,9 +982,9 @@ namespace FoodRecipeProvider.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("AppRecipe");
-
                     b.Navigation("CuisineType");
+
+                    b.Navigation("Recipe");
                 });
 
             modelBuilder.Entity("FoodRecipeProvider.Models.RecipeDietLabels", b =>
@@ -987,6 +1006,25 @@ namespace FoodRecipeProvider.Migrations
                     b.Navigation("DietLabel");
                 });
 
+            modelBuilder.Entity("FoodRecipeProvider.Models.RecipeDishTypes", b =>
+                {
+                    b.HasOne("FoodRecipeProvider.Models.AppRecipe", "AppRecipe")
+                        .WithMany()
+                        .HasForeignKey("AppRecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FoodRecipeProvider.Models.DishType", "DishType")
+                        .WithMany("RecipeDishTypes")
+                        .HasForeignKey("DishTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppRecipe");
+
+                    b.Navigation("DishType");
+                });
+
             modelBuilder.Entity("FoodRecipeProvider.Models.RecipeHealthLabels", b =>
                 {
                     b.HasOne("FoodRecipeProvider.Models.AppRecipe", "AppRecipe")
@@ -1006,7 +1044,7 @@ namespace FoodRecipeProvider.Migrations
                     b.Navigation("HealthLabel");
                 });
 
-            modelBuilder.Entity("FoodRecipeProvider.Models.RecipeIngredient", b =>
+            modelBuilder.Entity("FoodRecipeProvider.Models.RecipeMealTypes", b =>
                 {
                     b.HasOne("FoodRecipeProvider.Models.AppRecipe", "AppRecipe")
                         .WithMany()
@@ -1014,22 +1052,22 @@ namespace FoodRecipeProvider.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FoodRecipeProvider.Models.IngredientDb", "Ingredient")
-                        .WithMany("RecipeIngredients")
-                        .HasForeignKey("IngredientId")
+                    b.HasOne("FoodRecipeProvider.Models.MealType", "MealType")
+                        .WithMany("RecipeMealTypes")
+                        .HasForeignKey("MealTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("AppRecipe");
 
-                    b.Navigation("Ingredient");
+                    b.Navigation("MealType");
                 });
 
             modelBuilder.Entity("FoodRecipeProvider.Models.UserCuisineType", b =>
                 {
                     b.HasOne("FoodRecipeProvider.Models.AppUser", "AppUser")
                         .WithMany()
-                        .HasForeignKey("AppUserId")
+                        .HasForeignKey("AppUserId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1048,7 +1086,7 @@ namespace FoodRecipeProvider.Migrations
                 {
                     b.HasOne("FoodRecipeProvider.Models.AppUser", "AppUser")
                         .WithMany()
-                        .HasForeignKey("AppUserId")
+                        .HasForeignKey("AppUserId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1067,7 +1105,7 @@ namespace FoodRecipeProvider.Migrations
                 {
                     b.HasOne("FoodRecipeProvider.Models.AppUser", "AppUser")
                         .WithMany()
-                        .HasForeignKey("AppUserId")
+                        .HasForeignKey("AppUserId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1171,14 +1209,19 @@ namespace FoodRecipeProvider.Migrations
                     b.Navigation("RecipeDietLabels");
                 });
 
+            modelBuilder.Entity("FoodRecipeProvider.Models.DishType", b =>
+                {
+                    b.Navigation("RecipeDishTypes");
+                });
+
             modelBuilder.Entity("FoodRecipeProvider.Models.HealthLabel", b =>
                 {
                     b.Navigation("RecipeHealthLabels");
                 });
 
-            modelBuilder.Entity("FoodRecipeProvider.Models.IngredientDb", b =>
+            modelBuilder.Entity("FoodRecipeProvider.Models.MealType", b =>
                 {
-                    b.Navigation("RecipeIngredients");
+                    b.Navigation("RecipeMealTypes");
                 });
 #pragma warning restore 612, 618
         }

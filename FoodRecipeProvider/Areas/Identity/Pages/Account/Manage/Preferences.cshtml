@@ -5,53 +5,32 @@
 }
 
 <div class="p-4">
-<h4>Your cuisine types:</h4>
-@if (Model.ExistingCuisineTypes != null && Model.ExistingCuisineTypes.Any())
-{
-    <ul>
-        @foreach (var cuisineType in Model.ExistingCuisineTypes)
-        {
-            <li>@cuisineType.CuisineName</li>
-        }
-    </ul>
-}
-else
-{
-    <p>No favorite cuisines set.</p>
-}
+    <h4>Your cuisine types:</h4>
+    @if (Model.UserCuisineTypes.Any())
+    {
+        <ul>
+            @foreach (var cuisineType in Model.UserCuisineTypes)
+            {
+                <li>@cuisineType.Name</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No favorite cuisines set.</p>
+    }
 
-<a href="SelectCuisineTypes" class="w-auto btn btn btn-primary">Update cuisine types</a>
-
-</div>
-
-<div class ="p-4">
-<h4>Your health labels:</h4>
-@if (Model.ExistingHealthLabels != null && Model.ExistingHealthLabels.Any())
-{
-    <ul>
-        @foreach (var healthLabel in Model.ExistingHealthLabels)
-        {
-            <li>@healthLabel.HealthLabelName</li>
-        }
-    </ul>
-}
-else
-{
-    <p>No health options set.</p>
-}
-
-<a href="SelectDietLabels" class="w-auto btn btn btn-primary">Update health labels</a>
-
+    <a asp-page="SelectCuisineTypes" class="w-auto btn btn-primary">Update cuisine types</a>
 </div>
 
 <div class="p-4">
     <h4>Your diet labels:</h4>
-    @if (Model.ExistingDietLabels != null && Model.ExistingDietLabels.Any())
+    @if (Model.UserDietLabels.Any())
     {
         <ul>
-            @foreach (var dietLabel in Model.ExistingDietLabels)
+            @foreach (var dietLabel in Model.UserDietLabels)
             {
-                <li>@dietLabel.DietLabelName</li>
+                <li>@dietLabel.Name</li>
             }
         </ul>
     }
@@ -60,6 +39,24 @@ else
         <p>No diet options set.</p>
     }
 
-    <a href="SelectDietLabels" class="w-auto btn btn btn-primary">Update diet labels</a>
+    <a asp-page="SelectDietLabels" class="w-auto btn btn-primary">Update diet labels</a>
+</div>
 
+<div class="p-4">
+    <h4>Your health labels:</h4>
+    @if (Model.UserHealthLabels.Any())
+    {
+        <ul>
+            @foreach (var healthLabel in Model.UserHealthLabels)
+            {
+                <li>@healthLabel.Name</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No health options set.</p>
+    }
+
+    <a asp-page="SelectHealthLabels" class="w-auto btn btn-primary">Update health labels</a>
 </div>

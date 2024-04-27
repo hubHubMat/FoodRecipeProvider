@@ -3,6 +3,12 @@ using FoodRecipeProvider.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace FoodRecipeProvider.Areas.Identity.Pages.Account.Manage
 {
@@ -12,21 +18,21 @@ namespace FoodRecipeProvider.Areas.Identity.Pages.Account.Manage
         private readonly ApplicationDbContext _context;
         private readonly UserManager<AppUser> _userManager;
 
-        public SelectCuisineTypesModel(ILogger<SelectCuisineTypesModel> logger, ApplicationDbContext applicationDbContext, UserManager<AppUser> userManager)
+        public SelectCuisineTypesModel(ILogger<SelectCuisineTypesModel> logger, ApplicationDbContext context, UserManager<AppUser> userManager)
         {
             _logger = logger;
-            _context = applicationDbContext;
+            _context = context;
             _userManager = userManager;
         }
 
         [BindProperty]
-        public List<string>? SelectedCuisineTypes { get; set; }
-        public List<string>? AvailableCuisineTypes { get; set; }
+        public List<int>? SelectedCuisineTypeIds { get; set; }
+        public List<CuisineType> AvailableCuisineTypes { get; set; } = new List<CuisineType>();
 
-        public IActionResult OnGet()
+        public async Task<IActionResult> OnGetAsync()
         {
-            
-            AvailableCuisineTypes = Enum.GetNames(typeof(CuisineTypeEnum)).ToList();
+            // Load available cuisine types from the database
+            AvailableCuisineTypes = await _context.CuisineTypes.ToListAsync();
 
             return Page();
         }
@@ -38,38 +44,56 @@ namespace FoodRecipeProvider.Areas.Identity.Pages.Account.Manage
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
+
+            // Get the user ID
             var userId = await _userManager.GetUserIdAsync(user);
 
-            var existingPreferences = _context.UserCuisineTypes
-                .Where(uct => uct.UserId == userId)
-                .ToList();
-            if(SelectedCuisineTypes != null && SelectedCuisineTypes.Any())
-            foreach (string cuisineType in SelectedCuisineTypes)
+            try
             {
-                var existingPreference = existingPreferences
-                    .FirstOrDefault(uct => uct.CuisineName == cuisineType);
+                // Retrieve existing user's cuisine type associations
+                var existingUserCuisineTypes = await _context.UserCuisineTypes
+                    .Where(uct => uct.AppUserId == userId)
+                    .ToListAsync();
 
-                if (existingPreference == null)
+                // Update user's selected cuisine types
+                if (SelectedCuisineTypeIds != null)
                 {
-                    var userCuisineType = new UserCuisineType
+                    var selectedCuisineTypeIdsSet = new HashSet<int>(SelectedCuisineTypeIds);
+
+                    // Add new associations
+                    foreach (var cuisineTypeId in selectedCuisineTypeIdsSet)
                     {
-                        UserId = userId,
-                        CuisineName = cuisineType
-                    };
+                        if (!existingUserCuisineTypes.Any(uct => uct.CuisineTypeId == cuisineTypeId))
+                        {
+                            var newUserCuisineType = new UserCuisineType
+                            {
+                                AppUserId = userId,
+                                CuisineTypeId = cuisineTypeId
+                            };
+                            _context.UserCuisineTypes.Add(newUserCuisineType);
+                        }
+                    }
 
-                    _context.UserCuisineTypes.Add(userCuisineType);
+                    // Remove associations that are not selected anymore
+                    foreach (var existingUserCuisineType in existingUserCuisineTypes)
+                    {
+                        if (!selectedCuisineTypeIdsSet.Contains(existingUserCuisineType.CuisineTypeId))
+                        {
+                            _context.UserCuisineTypes.Remove(existingUserCuisineType);
+                        }
+                    }
+
+                    // Save changes to the database
+                    await _context.SaveChangesAsync();
                 }
-                else
-                {
-                    existingPreferences.Remove(existingPreference);
-                }
+
+                return RedirectToPage("Preferences"); // Redirect to preferences page after successful update
             }
-
-            _context.UserCuisineTypes.RemoveRange(existingPreferences);
-
-            _context.SaveChanges();
-
-            return RedirectToPage("Preferences");
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while updating user's cuisine types.");
+                throw; // You may want to handle this more gracefully
+            }
         }
     }
 }

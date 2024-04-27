@@ -21,12 +21,12 @@ namespace FoodRecipeProvider.Data
         public DbSet<DishType> DishTypes { get; set; }
         public DbSet<HealthLabel> HealthLabels { get; set; }
         public DbSet<DietLabel> DietLabels { get; set; }
+        public DbSet<IngredientDb> Ingredients { get; set; }
         public DbSet<AppRecipe> Recipes { get; set; }
         public DbSet<RecipeCuisineTypes> RecipeCuisineTypes { get; set; }
-        public DbSet<RecipeMealTypes> RecipeMealTypes { get; set; }
-        public DbSet<RecipeDishTypes> RecipeDishTypes { get; set; }
         public DbSet<RecipeHealthLabels> RecipeHealthLabels { get; set; }
         public DbSet<RecipeDietLabels> RecipeDietLabels { get; set; }
+        public DbSet<RecipeIngredient> RecipeIngredients { get; set; }
 
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
@@ -38,15 +38,21 @@ namespace FoodRecipeProvider.Data
         {
 
             modelBuilder.Entity<RecipeCuisineTypes>()
-            .HasKey(rct => new { rct.AppRecipeId, rct.CuisineTypeId });
-            modelBuilder.Entity<RecipeMealTypes>()
-            .HasKey(rct => new { rct.AppRecipeId, rct.MealTypeId });
-            modelBuilder.Entity<RecipeDishTypes>()
-            .HasKey(rct => new { rct.AppRecipeId, rct.DishTypeId });
+                .HasKey(rct => new { rct.AppRecipeId, rct.CuisineTypeId });
             modelBuilder.Entity<RecipeHealthLabels>()
-            .HasKey(rct => new { rct.AppRecipeId, rct.HealthLabelId });
+                .HasKey(rct => new { rct.AppRecipeId, rct.HealthLabelId });
             modelBuilder.Entity<RecipeDietLabels>()
-            .HasKey(rct => new { rct.AppRecipeId, rct.DietLabelId });
+                .HasKey(rct => new { rct.AppRecipeId, rct.DietLabelId });
+            modelBuilder.Entity<RecipeIngredient>()
+                .HasKey(ri => new { ri.AppRecipeId, ri.IngredientId });
+
+            modelBuilder.Entity<UserDietLabel>()
+                .HasKey(udl => new { udl.AppUserId, udl.DietLabelId });
+            modelBuilder.Entity<UserHealthLabel>()
+                .HasKey(uhl => new { uhl.AppUserId, uhl.HealthLabelId });
+            modelBuilder.Entity<UserCuisineType>()
+                .HasKey(uct => new { uct.AppUserId, uct.CuisineTypeId });
+
 
             base.OnModelCreating(modelBuilder);
 

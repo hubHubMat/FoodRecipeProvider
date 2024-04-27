@@ -1,11 +1,10 @@
 using FoodRecipeProvider.Data;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using FoodRecipeProvider.Services;
 using FoodRecipeProvider.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 
 var configuration = new ConfigurationBuilder()
@@ -28,11 +27,18 @@ builder.Services.AddHttpClient<EdamamApiClient>(client =>
     client.BaseAddress = new Uri("https://api.edamam.com/");
 });
 
+builder.Services.AddHttpClient<RRSApiClient>(client =>
+{
+    client.BaseAddress = new Uri("http://192.168.0.20:5000");
+});
+
 builder.Services.Configure<EdamamApiOptions>(configuration.GetSection("EdamamApi"));
 
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
