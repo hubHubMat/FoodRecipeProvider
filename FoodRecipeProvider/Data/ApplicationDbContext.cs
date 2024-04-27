@@ -56,7 +56,7 @@ namespace FoodRecipeProvider.Data
 
             base.OnModelCreating(modelBuilder);
 
-            // Seeding CuisineTypes
+            /*// Seeding CuisineTypes
             var cuisineTypeList = new List<string>
             {
                 "american",
@@ -216,9 +216,7 @@ namespace FoodRecipeProvider.Data
                     Id = dietLabelList.IndexOf(dietLabelName) + 1,
                     Name = dietLabelName
                 });
-            }
+            }*/
         }
-
-
     }
 }

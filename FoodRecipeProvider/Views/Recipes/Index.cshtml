@@ -1,4 +1,6 @@
-﻿@model SearchQueryModel
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@model SearchQueryModel
 
 @{
     ViewData["Title"] = "Search Recipes";
@@ -119,6 +121,25 @@
     <div>
         <h6>Count: @Model.SearchByQueryResponse.count</h6>
     </div>
+    @if (Model.SearchByUrisResponse != null && SignInManager.IsSignedIn(User))
+    {
+    <h5>Recommended recipes:</h5>
+    <ul class="recipe-list">
+        @foreach (var recipe in Model.SearchByUrisResponse.hits.Skip((Model.CurrentPage - 1) * 12).Take(12))
+        {
+            <li class="recipe-item">
+                <div class="recipe-image">
+                    <img src="@recipe.recipe.image" alt="Recipe Image">
+                </div>
+                <div class="recipe-info">
+                    <h5 class="recipe-title">@recipe.recipe.label</h5>
+                    <a href="@Url.Action("RecipeDetails", new { recipeUri = recipe.recipe.uri })" class="btn btn-primary recipe-button">View Recipe</a>
+                </div>
+            </li>
+        }
+    </ul>
+    }
+    <h5>Searched recipes:</h5>
     <ul class="recipe-list">
         @foreach (var recipe in Model.SearchByQueryResponse.hits.Skip((Model.CurrentPage - 1) * 12).Take(12))
         {

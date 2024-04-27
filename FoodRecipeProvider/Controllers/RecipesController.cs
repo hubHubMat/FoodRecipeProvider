@@ -30,27 +30,32 @@ namespace FoodRecipeProvider.Controllers
 
         public async Task<IActionResult> Index(SearchTags query)
         {
+            var searchByUrisResponse = new SearchByUrisResponse();
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                searchByUrisResponse = null;
             }
-
-            var userId = await _userManager.GetUserIdAsync(user);
-            var recomendedRecipesResponse = await _rrsApiClient.GetRecommendedRecipes(userId);
-            List<string> recipeuris = new List<string>();
-            if (recomendedRecipesResponse != null)
+            else
             {
-                foreach(var recipe in recomendedRecipesResponse)
+                var userId = await _userManager.GetUserIdAsync(user);
+                var recomendedRecipesResponse = await _rrsApiClient.GetRecommendedRecipes(userId);
+                List<string> recipeuris = new List<string>();
+                if (recomendedRecipesResponse != null)
                 {
-                    recipeuris.Add(recipe.RecipeUri);
+                    foreach (var recipe in recomendedRecipesResponse)
+                    {
+                        recipeuris.Add(recipe.RecipeUri);
+                    }
                 }
+
+                searchByUrisResponse = await _edamamApiClient.GetRecipesByUrisAsync(recipeuris);
             }
 
-            var getRecipesByUrisResponse = await _edamamApiClient.GetRecipesByUrisAsync(recipeuris);
-            if(getRecipesByUrisResponse != null)
+            if(searchByUrisResponse != null)
             {
-                foreach (var a in  getRecipesByUrisResponse.hits)
+                foreach (var a in  searchByUrisResponse.hits)
                 {
                     await Console.Out.WriteLineAsync(a.recipe.label);
                 }
@@ -63,6 +68,7 @@ namespace FoodRecipeProvider.Controllers
                 var model = new SearchQueryModel
                 {
                     SearchByQueryResponse = searchRecipesResponse,
+                    SearchByUrisResponse = searchByUrisResponse,
                     SearchTags = new SearchTags(),
                     AvailableDietLabels = Enum.GetNames(typeof(DietLabelEnum)).ToList(),
                     AvailableHealthLabels = Enum.GetNames(typeof(HealthLabelEnum)).ToList(),

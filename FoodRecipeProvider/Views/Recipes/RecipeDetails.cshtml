@@ -1,4 +1,6 @@
-﻿<div class="container my-5 recipe-details">
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+<div class="container my-5 recipe-details">
     <div class="row">
         <div class="col-lg-7 recipe-info">
             <h1>@Model.label</h1>
@@ -38,26 +40,32 @@
                 </div>
             }
         </div>
-
-        <div class="col-lg-5 rate-recipe">
-            <h2>Rate this Recipe</h2>
-            <form method="post" action="@Url.Action("RateRecipe", "Recipes")">
-                <!-- Star-based rating system -->
-                <div class="form-group">
-                    @for (int i = 1; i <= 5; i++)
-                    {
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input star-input" type="radio" name="rating" id="rating@(i)" value="@i">
-                            <label class="form-check-label star-label" for="rating@(i)">
-                                <i class="fas fa-star"></i>
-                            </label>
-                        </div>
-                    }
-                </div>
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <div class="col-lg-5 rate-recipe">
+                <h2>Rate this Recipe</h2>
+                <form method="post" action="@Url.Action("RateRecipe", "Recipes")">
+                    <!-- Star-based rating system -->
+                    <div class="form-group">
+                        @for (int i = 1; i <= 5; i++)
+                        {
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input star-input" type="radio" name="rating" id="rating@(i)" value="@i">
+                                <label class="form-check-label star-label" for="rating@(i)">
+                                    <i class="fas fa-star"></i>
+                                </label>
+                            </div>
+                        }
+                    </div>
                 <input type="hidden" name="recipeUri" value="@Model.uri" />
                 <button type="submit" class="btn btn-primary">Submit Rating</button>
             </form>
-        </div>
+            </div>
+        }
+        else
+        {
+            <h6>Log in to rate this recipe.</h6>
+        }
     </div>
 </div>
 

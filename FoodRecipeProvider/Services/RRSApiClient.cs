@@ -16,7 +16,7 @@ public class RRSApiClient: IRRSApiClient
 
     public async Task<List<RecommendedRecipe>> GetRecommendedRecipes(string userId)
     {
-        var response = await _httpClient.PostAsJsonAsync("recommend", new { user_id = userId, top_n = 5 });
+        var response = await _httpClient.PostAsJsonAsync("recommend", new { user_id = userId, top_n = 6 });
 
         if (response.IsSuccessStatusCode)
         {

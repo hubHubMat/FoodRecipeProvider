@@ -38,6 +38,7 @@
     public class SearchQueryModel
     {
         public SearchByQueryResponse SearchByQueryResponse { get; set; }
+        public SearchByUrisResponse SearchByUrisResponse { get; set; }
         public SearchTags SearchTags { get; set; }
         public List<string>? AvailableDietLabels { get; set; }
         public List<string>? AvailableHealthLabels { get; set; }
