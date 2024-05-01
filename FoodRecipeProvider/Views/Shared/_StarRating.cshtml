@@ -20,7 +20,7 @@
     }
 
         .star.active {
-            color: #fdd835; /* Active star color, you can change this */
+            color: #fdd835; 
         }
 </style>
 
@@ -41,15 +41,11 @@
             var value = $(this).data('value');
             $('.star-rating').data('rating', value);
             highlightStars(value);
-
-            // You can also send an AJAX request to update the rating in the backend
-            // and handle the server response accordingly
-            // Example: $.post('/Recipe/Rate', { recipeId: 123, rating: value });
         });
 
         function highlightStars(value) {
-            $('.star-rating .star').removeClass('active');
-            $('.star-rating .star:lt(' + value + ')').addClass('active');
+            $('.star-rating.star').removeClass('active');
+            $('.star-rating.star:lt(' + (value) + ')').addClass('active');
         }
     });
 </script>

@@ -1,4 +1,4 @@
-﻿namespace FoodRecipeProvider.Models
+﻿namespace FoodRecipeProvider.Models.APIRecipeResponse
 {
     public class SearchByQueryResponse
     {

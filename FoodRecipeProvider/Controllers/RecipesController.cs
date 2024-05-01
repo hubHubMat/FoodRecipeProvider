@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using FoodRecipeProvider.Services;
 using FoodRecipeProvider.Models;
+using FoodRecipeProvider.Models.APIRecipeResponse;
 using FoodRecipeProvider.Data;
 using Azure;
 
@@ -70,11 +71,11 @@ namespace FoodRecipeProvider.Controllers
                     SearchByQueryResponse = searchRecipesResponse,
                     SearchByUrisResponse = searchByUrisResponse,
                     SearchTags = new SearchTags(),
-                    AvailableDietLabels = Enum.GetNames(typeof(DietLabelEnum)).ToList(),
-                    AvailableHealthLabels = Enum.GetNames(typeof(HealthLabelEnum)).ToList(),
-                    AvailableDishTypes = Enum.GetNames(typeof(DishTypeEnum)).ToList(),
-                    AvailableCuisineTypes = Enum.GetNames(typeof(CuisineTypeEnum)).ToList(),
-                    AvailableMealTypes = Enum.GetNames(typeof(MealTypeEnum)).ToList()
+                    AvailableDietLabels = _context.DietLabels.Select(dl => dl.Name).ToList(),
+                    AvailableHealthLabels = _context.HealthLabels.Select(dl => dl.Name).ToList(),
+                    AvailableDishTypes = _context.DishTypes.Select(dl => dl.Name).ToList(),
+                    AvailableCuisineTypes = _context.CuisineTypes.Select(dl => dl.Name).ToList(),
+                    AvailableMealTypes = _context.DietLabels.Select(dl => dl.Name).ToList()
                 };
 
                 return View(model);

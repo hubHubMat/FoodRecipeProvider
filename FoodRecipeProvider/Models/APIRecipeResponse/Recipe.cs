@@ -1,9 +1,7 @@
 ﻿using Newtonsoft.Json;
 
-namespace FoodRecipeProvider.Models
+namespace FoodRecipeProvider.Models.APIRecipeResponse
 {
-    // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
-    
     public class Hit
     {
         public Recipe recipe { get; set; }

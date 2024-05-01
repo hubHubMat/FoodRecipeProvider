@@ -7,7 +7,7 @@
 
             @if (!string.IsNullOrEmpty(Model.images.LARGE?.url))
             {
-                <img src="@Model.images.LARGE.url" alt="Recipe Image" class="recipe-image img-fluid mb-4" loading="lazy">
+                <img src="@Model.images.LARGE.url" alt="Recipe Image" class="recipe-image mb-4" loading="lazy">
             }
             else
             {
@@ -39,6 +39,8 @@
                     </ol>
                 </div>
             }
+            <h6>Source: @Model.source</h6>
+            <a href="@Model.url">Go to page</a>
         </div>
         @if (SignInManager.IsSignedIn(User))
         {

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 using FoodRecipeProvider.Models;
+using FoodRecipeProvider.Models.APIRecipeResponse;
 using Newtonsoft.Json;
 using Azure;
 using Microsoft.EntityFrameworkCore;
@@ -191,7 +192,7 @@ namespace FoodRecipeProvider.Services
 
         public async Task<SearchByUrisResponse> GetRecipesByUrisAsync(List<string> recipeUris)
         {
-            var endpoint = $"api/recipes/v2/by-uri?type=public&app_id={_apiOptions.AppId}&app_key={_apiOptions.ApiKey}&field=uri&field=label&field=image";
+            var endpoint = $"api/recipes/v2/by-uri?type=public&app_id={_apiOptions.AppId}&app_key={_apiOptions.ApiKey}&field=uri&field=label&field=image&field=source";
 
             foreach (var uri in recipeUris)
             {

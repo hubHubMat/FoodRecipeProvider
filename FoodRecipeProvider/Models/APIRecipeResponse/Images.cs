@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace FoodRecipeProvider.Models
+namespace FoodRecipeProvider.Models.APIRecipeResponse
 {  
 
     public class Images
