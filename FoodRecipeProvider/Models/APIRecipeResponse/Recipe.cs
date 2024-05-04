@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace FoodRecipeProvider.Models.APIRecipeResponse
+﻿namespace FoodRecipeProvider.Models.APIRecipeResponse
 {
     public class Hit
     {
@@ -18,8 +16,6 @@ namespace FoodRecipeProvider.Models.APIRecipeResponse
         public string foodId { get; set; }
         public string image { get; set; }
     }
-
-    
 
     public class Recipe
     {

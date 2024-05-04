@@ -1,5 +1,4 @@
-﻿using FoodRecipeProvider.Models;
-using FoodRecipeProvider.Models.APIRecipeResponse;
+﻿using FoodRecipeProvider.Models.APIRecipeResponse;
 namespace FoodRecipeProvider.Services
 {
     public interface IEdamamApiClient

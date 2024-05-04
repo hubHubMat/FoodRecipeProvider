@@ -45,7 +45,7 @@
         public List<string>? AvailableDishTypes { get; set; }
         public List<string>? AvailableCuisineTypes { get; set; }
         public List<string>? AvailableMealTypes { get; set; }
-        public int PageCount {  get; set; }
+        public int PageCount { get; set; }
         public int CurrentPage { get; set; }
         public bool ifDefaultHealth { get; set; }
         public bool ifDefaultDiet { get; set; }

@@ -1,0 +1,120 @@
+,Id_x,AppUserId,AppRecipeId,Rate,Id_y,Label,Uri,IngredientId,Id,Name
+0,1053,19430afd-dbcf-43b9-9184-17a6a5a07062,1052,4.0,1052,‘Mpanatigghi (Sicilian Chocolate-Meat Cookies),http://www.edamam.com/ontologies/edamam.owl#recipe_25c588c5801c4b2694bed417b40a120e,1002,1002,flour
+1,1053,19430afd-dbcf-43b9-9184-17a6a5a07062,1052,4.0,1052,‘Mpanatigghi (Sicilian Chocolate-Meat Cookies),http://www.edamam.com/ontologies/edamam.owl#recipe_25c588c5801c4b2694bed417b40a120e,1003,1003,sugar
+2,1053,19430afd-dbcf-43b9-9184-17a6a5a07062,1052,4.0,1052,‘Mpanatigghi (Sicilian Chocolate-Meat Cookies),http://www.edamam.com/ontologies/edamam.owl#recipe_25c588c5801c4b2694bed417b40a120e,1004,1004,unsalted butter
+3,1053,19430afd-dbcf-43b9-9184-17a6a5a07062,1052,4.0,1052,‘Mpanatigghi (Sicilian Chocolate-Meat Cookies),http://www.edamam.com/ontologies/edamam.owl#recipe_25c588c5801c4b2694bed417b40a120e,1005,1005,egg yolks
+4,2053,19430afd-dbcf-43b9-9184-17a6a5a07062,2067,3.0,2067,Tabasco Spicy Potatoes,http://www.edamam.com/ontologies/edamam.owl#recipe_cb9682173c56e51ceee2278f11355b27,33,33,Mayonnaise
+5,2053,19430afd-dbcf-43b9-9184-17a6a5a07062,2067,3.0,2067,Tabasco Spicy Potatoes,http://www.edamam.com/ontologies/edamam.owl#recipe_cb9682173c56e51ceee2278f11355b27,2051,2051,Tabasco Pepper Sauce
+6,2053,19430afd-dbcf-43b9-9184-17a6a5a07062,2067,3.0,2067,Tabasco Spicy Potatoes,http://www.edamam.com/ontologies/edamam.owl#recipe_cb9682173c56e51ceee2278f11355b27,2052,2052,lime
+7,2066,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,52,5.0,52,Fathers Day Food Lasagne with Meat,http://www.edamam.com/ontologies/edamam.owl#recipe_f3376c0d85e6469eab470deb14570ac0,1,1,Lasagna
+8,2066,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,52,5.0,52,Fathers Day Food Lasagne with Meat,http://www.edamam.com/ontologies/edamam.owl#recipe_f3376c0d85e6469eab470deb14570ac0,2,2,Meat
+9,2066,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,52,5.0,52,Fathers Day Food Lasagne with Meat,http://www.edamam.com/ontologies/edamam.owl#recipe_f3376c0d85e6469eab470deb14570ac0,3,3,tomatoes
+10,2067,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,53,5.0,53,Spice-Rubbed Grilled Flap Meat (Sirloin Tip) Recipe,http://www.edamam.com/ontologies/edamam.owl#recipe_763b4b1ced75faae48164b68ee9e3fad,4,4,black peppercorns
+11,2067,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,53,5.0,53,Spice-Rubbed Grilled Flap Meat (Sirloin Tip) Recipe,http://www.edamam.com/ontologies/edamam.owl#recipe_763b4b1ced75faae48164b68ee9e3fad,5,5,coriander seed
+12,2067,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,53,5.0,53,Spice-Rubbed Grilled Flap Meat (Sirloin Tip) Recipe,http://www.edamam.com/ontologies/edamam.owl#recipe_763b4b1ced75faae48164b68ee9e3fad,6,6,fennel seed
+13,2067,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,53,5.0,53,Spice-Rubbed Grilled Flap Meat (Sirloin Tip) Recipe,http://www.edamam.com/ontologies/edamam.owl#recipe_763b4b1ced75faae48164b68ee9e3fad,7,7,cumin
+14,2067,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,53,5.0,53,Spice-Rubbed Grilled Flap Meat (Sirloin Tip) Recipe,http://www.edamam.com/ontologies/edamam.owl#recipe_763b4b1ced75faae48164b68ee9e3fad,8,8,red pepper flakes
+15,2067,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,53,5.0,53,Spice-Rubbed Grilled Flap Meat (Sirloin Tip) Recipe,http://www.edamam.com/ontologies/edamam.owl#recipe_763b4b1ced75faae48164b68ee9e3fad,9,9,dried oregano
+16,2067,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,53,5.0,53,Spice-Rubbed Grilled Flap Meat (Sirloin Tip) Recipe,http://www.edamam.com/ontologies/edamam.owl#recipe_763b4b1ced75faae48164b68ee9e3fad,10,10,garlic
+17,2067,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,53,5.0,53,Spice-Rubbed Grilled Flap Meat (Sirloin Tip) Recipe,http://www.edamam.com/ontologies/edamam.owl#recipe_763b4b1ced75faae48164b68ee9e3fad,11,11,canola oil
+18,2067,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,53,5.0,53,Spice-Rubbed Grilled Flap Meat (Sirloin Tip) Recipe,http://www.edamam.com/ontologies/edamam.owl#recipe_763b4b1ced75faae48164b68ee9e3fad,12,12,flap meat
+19,2067,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,53,5.0,53,Spice-Rubbed Grilled Flap Meat (Sirloin Tip) Recipe,http://www.edamam.com/ontologies/edamam.owl#recipe_763b4b1ced75faae48164b68ee9e3fad,13,13,Kosher salt
+20,2068,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,54,5.0,54,Meat and Fava Stew,http://www.edamam.com/ontologies/edamam.owl#recipe_7d9b74eaccc54ff29819247838284766,3,3,tomatoes
+21,2068,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,54,5.0,54,Meat and Fava Stew,http://www.edamam.com/ontologies/edamam.owl#recipe_7d9b74eaccc54ff29819247838284766,10,10,garlic
+22,2068,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,54,5.0,54,Meat and Fava Stew,http://www.edamam.com/ontologies/edamam.owl#recipe_7d9b74eaccc54ff29819247838284766,14,14,vegetable oil
+23,2068,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,54,5.0,54,Meat and Fava Stew,http://www.edamam.com/ontologies/edamam.owl#recipe_7d9b74eaccc54ff29819247838284766,15,15,yellow onions
+24,2068,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,54,5.0,54,Meat and Fava Stew,http://www.edamam.com/ontologies/edamam.owl#recipe_7d9b74eaccc54ff29819247838284766,16,16,beef stew meat
+25,2068,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,54,5.0,54,Meat and Fava Stew,http://www.edamam.com/ontologies/edamam.owl#recipe_7d9b74eaccc54ff29819247838284766,17,17,Salt
+26,2068,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,54,5.0,54,Meat and Fava Stew,http://www.edamam.com/ontologies/edamam.owl#recipe_7d9b74eaccc54ff29819247838284766,18,18,black pepper
+27,2068,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,54,5.0,54,Meat and Fava Stew,http://www.edamam.com/ontologies/edamam.owl#recipe_7d9b74eaccc54ff29819247838284766,19,19,favas
+28,2068,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,54,5.0,54,Meat and Fava Stew,http://www.edamam.com/ontologies/edamam.owl#recipe_7d9b74eaccc54ff29819247838284766,20,20,cooked rice
+29,2069,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,55,5.0,55,Crab-Meat-Stuffed Sole,http://www.edamam.com/ontologies/edamam.owl#recipe_cbd557240975fb6519580ce83b4c0e3c,10,10,garlic
+30,2069,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,55,5.0,55,Crab-Meat-Stuffed Sole,http://www.edamam.com/ontologies/edamam.owl#recipe_cbd557240975fb6519580ce83b4c0e3c,21,21,crab meat
+31,2069,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,55,5.0,55,Crab-Meat-Stuffed Sole,http://www.edamam.com/ontologies/edamam.owl#recipe_cbd557240975fb6519580ce83b4c0e3c,22,22,low-fat) mayonnaise
+32,2069,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,55,5.0,55,Crab-Meat-Stuffed Sole,http://www.edamam.com/ontologies/edamam.owl#recipe_cbd557240975fb6519580ce83b4c0e3c,23,23,yellow bell pepper
+33,2069,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,55,5.0,55,Crab-Meat-Stuffed Sole,http://www.edamam.com/ontologies/edamam.owl#recipe_cbd557240975fb6519580ce83b4c0e3c,24,24,parsley
+34,2069,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,55,5.0,55,Crab-Meat-Stuffed Sole,http://www.edamam.com/ontologies/edamam.owl#recipe_cbd557240975fb6519580ce83b4c0e3c,25,25,sole
+35,2069,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,55,5.0,55,Crab-Meat-Stuffed Sole,http://www.edamam.com/ontologies/edamam.owl#recipe_cbd557240975fb6519580ce83b4c0e3c,26,26,extra-virgin olive oil
+36,2069,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,55,5.0,55,Crab-Meat-Stuffed Sole,http://www.edamam.com/ontologies/edamam.owl#recipe_cbd557240975fb6519580ce83b4c0e3c,27,27,fresh bread crumbs
+37,2069,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,55,5.0,55,Crab-Meat-Stuffed Sole,http://www.edamam.com/ontologies/edamam.owl#recipe_cbd557240975fb6519580ce83b4c0e3c,28,28,lemon zest
+38,2070,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2072,5.0,2072,Meat fondue,http://www.edamam.com/ontologies/edamam.owl#recipe_03d5468f8040446ab6ff1ebaf7005db4,14,14,vegetable oil
+39,2070,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2072,5.0,2072,Meat fondue,http://www.edamam.com/ontologies/edamam.owl#recipe_03d5468f8040446ab6ff1ebaf7005db4,2062,2062,beef tenderloin
+40,2071,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,57,5.0,57,Autumn Cabbage And Smoked Meat Borscht recipes,http://www.edamam.com/ontologies/edamam.owl#recipe_13330bbb36e1b5e38cab7104e95eae82,10,10,garlic
+41,2071,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,57,5.0,57,Autumn Cabbage And Smoked Meat Borscht recipes,http://www.edamam.com/ontologies/edamam.owl#recipe_13330bbb36e1b5e38cab7104e95eae82,13,13,Kosher salt
+42,2071,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,57,5.0,57,Autumn Cabbage And Smoked Meat Borscht recipes,http://www.edamam.com/ontologies/edamam.owl#recipe_13330bbb36e1b5e38cab7104e95eae82,37,37,green cabbage
+43,2071,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,57,5.0,57,Autumn Cabbage And Smoked Meat Borscht recipes,http://www.edamam.com/ontologies/edamam.owl#recipe_13330bbb36e1b5e38cab7104e95eae82,38,38,oil
+44,2071,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,57,5.0,57,Autumn Cabbage And Smoked Meat Borscht recipes,http://www.edamam.com/ontologies/edamam.owl#recipe_13330bbb36e1b5e38cab7104e95eae82,39,39,white onion
+45,2071,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,57,5.0,57,Autumn Cabbage And Smoked Meat Borscht recipes,http://www.edamam.com/ontologies/edamam.owl#recipe_13330bbb36e1b5e38cab7104e95eae82,40,40,pastrami
+46,2071,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,57,5.0,57,Autumn Cabbage And Smoked Meat Borscht recipes,http://www.edamam.com/ontologies/edamam.owl#recipe_13330bbb36e1b5e38cab7104e95eae82,41,41,can diced tomatoes
+47,2071,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,57,5.0,57,Autumn Cabbage And Smoked Meat Borscht recipes,http://www.edamam.com/ontologies/edamam.owl#recipe_13330bbb36e1b5e38cab7104e95eae82,42,42,white vinegar
+48,2071,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,57,5.0,57,Autumn Cabbage And Smoked Meat Borscht recipes,http://www.edamam.com/ontologies/edamam.owl#recipe_13330bbb36e1b5e38cab7104e95eae82,43,43,light brown sugar
+49,2072,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,58,5.0,58,Meat Tortellini in Broth with Arugula and Pesto Toasts,http://www.edamam.com/ontologies/edamam.owl#recipe_8d4bc28be65052a1daca3450033ed9e9,44,44,Parmesan
+50,2072,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,58,5.0,58,Meat Tortellini in Broth with Arugula and Pesto Toasts,http://www.edamam.com/ontologies/edamam.owl#recipe_8d4bc28be65052a1daca3450033ed9e9,45,45,arugula
+51,2072,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,58,5.0,58,Meat Tortellini in Broth with Arugula and Pesto Toasts,http://www.edamam.com/ontologies/edamam.owl#recipe_8d4bc28be65052a1daca3450033ed9e9,46,46,olive oil
+52,2072,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,58,5.0,58,Meat Tortellini in Broth with Arugula and Pesto Toasts,http://www.edamam.com/ontologies/edamam.owl#recipe_8d4bc28be65052a1daca3450033ed9e9,47,47,Coarse salt
+53,2072,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,58,5.0,58,Meat Tortellini in Broth with Arugula and Pesto Toasts,http://www.edamam.com/ontologies/edamam.owl#recipe_8d4bc28be65052a1daca3450033ed9e9,48,48,ground pepper
+54,2072,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,58,5.0,58,Meat Tortellini in Broth with Arugula and Pesto Toasts,http://www.edamam.com/ontologies/edamam.owl#recipe_8d4bc28be65052a1daca3450033ed9e9,49,49,reduced-sodium chicken broth
+55,2072,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,58,5.0,58,Meat Tortellini in Broth with Arugula and Pesto Toasts,http://www.edamam.com/ontologies/edamam.owl#recipe_8d4bc28be65052a1daca3450033ed9e9,50,50,meat tortellini
+56,2072,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,58,5.0,58,Meat Tortellini in Broth with Arugula and Pesto Toasts,http://www.edamam.com/ontologies/edamam.owl#recipe_8d4bc28be65052a1daca3450033ed9e9,51,51,lemon juice
+57,2072,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,58,5.0,58,Meat Tortellini in Broth with Arugula and Pesto Toasts,http://www.edamam.com/ontologies/edamam.owl#recipe_8d4bc28be65052a1daca3450033ed9e9,52,52,baguette
+58,2073,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2073,5.0,2073,Meat Lovers Pizza Spaghetti,http://www.edamam.com/ontologies/edamam.owl#recipe_6bc87bcf574a4a0292c30d3aa34fde41,10,10,garlic
+59,2073,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2073,5.0,2073,Meat Lovers Pizza Spaghetti,http://www.edamam.com/ontologies/edamam.owl#recipe_6bc87bcf574a4a0292c30d3aa34fde41,13,13,Kosher salt
+60,2073,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2073,5.0,2073,Meat Lovers Pizza Spaghetti,http://www.edamam.com/ontologies/edamam.owl#recipe_6bc87bcf574a4a0292c30d3aa34fde41,18,18,black pepper
+61,2073,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2073,5.0,2073,Meat Lovers Pizza Spaghetti,http://www.edamam.com/ontologies/edamam.owl#recipe_6bc87bcf574a4a0292c30d3aa34fde41,26,26,extra-virgin olive oil
+62,2073,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2073,5.0,2073,Meat Lovers Pizza Spaghetti,http://www.edamam.com/ontologies/edamam.owl#recipe_6bc87bcf574a4a0292c30d3aa34fde41,2007,2007,onion
+63,2073,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2073,5.0,2073,Meat Lovers Pizza Spaghetti,http://www.edamam.com/ontologies/edamam.owl#recipe_6bc87bcf574a4a0292c30d3aa34fde41,2032,2032,mozzarella cheese
+64,2073,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2073,5.0,2073,Meat Lovers Pizza Spaghetti,http://www.edamam.com/ontologies/edamam.owl#recipe_6bc87bcf574a4a0292c30d3aa34fde41,2063,2063,sausage meat
+65,2073,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2073,5.0,2073,Meat Lovers Pizza Spaghetti,http://www.edamam.com/ontologies/edamam.owl#recipe_6bc87bcf574a4a0292c30d3aa34fde41,2064,2064,whole tomatoes
+66,2073,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2073,5.0,2073,Meat Lovers Pizza Spaghetti,http://www.edamam.com/ontologies/edamam.owl#recipe_6bc87bcf574a4a0292c30d3aa34fde41,2065,2065,pepperoni
+67,2073,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2073,5.0,2073,Meat Lovers Pizza Spaghetti,http://www.edamam.com/ontologies/edamam.owl#recipe_6bc87bcf574a4a0292c30d3aa34fde41,2066,2066,spaghetti
+68,2074,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2074,5.0,2074,Meat Lovers' Supreme Pizza,http://www.edamam.com/ontologies/edamam.owl#recipe_896cef296d2b04530316b81affb07c58,2020,2020,mushrooms
+69,2074,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2074,5.0,2074,Meat Lovers' Supreme Pizza,http://www.edamam.com/ontologies/edamam.owl#recipe_896cef296d2b04530316b81affb07c58,2032,2032,mozzarella cheese
+70,2074,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2074,5.0,2074,Meat Lovers' Supreme Pizza,http://www.edamam.com/ontologies/edamam.owl#recipe_896cef296d2b04530316b81affb07c58,2063,2063,sausage meat
+71,2074,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2074,5.0,2074,Meat Lovers' Supreme Pizza,http://www.edamam.com/ontologies/edamam.owl#recipe_896cef296d2b04530316b81affb07c58,2065,2065,pepperoni
+72,2074,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2074,5.0,2074,Meat Lovers' Supreme Pizza,http://www.edamam.com/ontologies/edamam.owl#recipe_896cef296d2b04530316b81affb07c58,2067,2067,pizza dough
+73,2074,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2074,5.0,2074,Meat Lovers' Supreme Pizza,http://www.edamam.com/ontologies/edamam.owl#recipe_896cef296d2b04530316b81affb07c58,2068,2068,marinara sauce
+74,2074,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2074,5.0,2074,Meat Lovers' Supreme Pizza,http://www.edamam.com/ontologies/edamam.owl#recipe_896cef296d2b04530316b81affb07c58,2069,2069,green pepper
+75,2074,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2074,5.0,2074,Meat Lovers' Supreme Pizza,http://www.edamam.com/ontologies/edamam.owl#recipe_896cef296d2b04530316b81affb07c58,2070,2070,bacon
+76,2075,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2075,5.0,2075,Meat Lovers' Supreme Pizza,http://www.edamam.com/ontologies/edamam.owl#recipe_d9145859771bef0a65bbc48cc3536dec,2020,2020,mushrooms
+77,2075,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2075,5.0,2075,Meat Lovers' Supreme Pizza,http://www.edamam.com/ontologies/edamam.owl#recipe_d9145859771bef0a65bbc48cc3536dec,2032,2032,mozzarella cheese
+78,2075,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2075,5.0,2075,Meat Lovers' Supreme Pizza,http://www.edamam.com/ontologies/edamam.owl#recipe_d9145859771bef0a65bbc48cc3536dec,2063,2063,sausage meat
+79,2075,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2075,5.0,2075,Meat Lovers' Supreme Pizza,http://www.edamam.com/ontologies/edamam.owl#recipe_d9145859771bef0a65bbc48cc3536dec,2065,2065,pepperoni
+80,2075,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2075,5.0,2075,Meat Lovers' Supreme Pizza,http://www.edamam.com/ontologies/edamam.owl#recipe_d9145859771bef0a65bbc48cc3536dec,2067,2067,pizza dough
+81,2075,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2075,5.0,2075,Meat Lovers' Supreme Pizza,http://www.edamam.com/ontologies/edamam.owl#recipe_d9145859771bef0a65bbc48cc3536dec,2068,2068,marinara sauce
+82,2075,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2075,5.0,2075,Meat Lovers' Supreme Pizza,http://www.edamam.com/ontologies/edamam.owl#recipe_d9145859771bef0a65bbc48cc3536dec,2069,2069,green pepper
+83,2075,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2075,5.0,2075,Meat Lovers' Supreme Pizza,http://www.edamam.com/ontologies/edamam.owl#recipe_d9145859771bef0a65bbc48cc3536dec,2070,2070,bacon
+84,2082,dbccfb81-fe65-4c59-b9ac-7574b4c9ec68,2076,5.0,2076,Cheese & onion bread,http://www.edamam.com/ontologies/edamam.owl#recipe_c879553de68c4a7a934a7498fec21585,17,17,Salt
+85,2082,dbccfb81-fe65-4c59-b9ac-7574b4c9ec68,2076,5.0,2076,Cheese & onion bread,http://www.edamam.com/ontologies/edamam.owl#recipe_c879553de68c4a7a934a7498fec21585,2024,2024,butter
+86,2082,dbccfb81-fe65-4c59-b9ac-7574b4c9ec68,2076,5.0,2076,Cheese & onion bread,http://www.edamam.com/ontologies/edamam.owl#recipe_c879553de68c4a7a934a7498fec21585,2071,2071,bread flour
+87,2082,dbccfb81-fe65-4c59-b9ac-7574b4c9ec68,2076,5.0,2076,Cheese & onion bread,http://www.edamam.com/ontologies/edamam.owl#recipe_c879553de68c4a7a934a7498fec21585,2072,2072,bread flour
+88,2082,dbccfb81-fe65-4c59-b9ac-7574b4c9ec68,2076,5.0,2076,Cheese & onion bread,http://www.edamam.com/ontologies/edamam.owl#recipe_c879553de68c4a7a934a7498fec21585,2073,2073,yeast
+89,2085,dbccfb81-fe65-4c59-b9ac-7574b4c9ec68,2077,5.0,2077,Baguettes (French bread),http://www.edamam.com/ontologies/edamam.owl#recipe_3177e127c7a94cb4aad17a3bca47e79d,2071,2071,bread flour
+90,2085,dbccfb81-fe65-4c59-b9ac-7574b4c9ec68,2077,5.0,2077,Baguettes (French bread),http://www.edamam.com/ontologies/edamam.owl#recipe_3177e127c7a94cb4aad17a3bca47e79d,2073,2073,yeast
+91,2088,dbccfb81-fe65-4c59-b9ac-7574b4c9ec68,2071,4.0,2071,cheese dip,http://www.edamam.com/ontologies/edamam.owl#recipe_2409975f8963425abdc562d7a19c8301,17,17,Salt
+92,2088,dbccfb81-fe65-4c59-b9ac-7574b4c9ec68,2071,4.0,2071,cheese dip,http://www.edamam.com/ontologies/edamam.owl#recipe_2409975f8963425abdc562d7a19c8301,30,30,Cream Cheese
+93,2088,dbccfb81-fe65-4c59-b9ac-7574b4c9ec68,2071,4.0,2071,cheese dip,http://www.edamam.com/ontologies/edamam.owl#recipe_2409975f8963425abdc562d7a19c8301,2022,2022,sour cream
+94,2088,dbccfb81-fe65-4c59-b9ac-7574b4c9ec68,2071,4.0,2071,cheese dip,http://www.edamam.com/ontologies/edamam.owl#recipe_2409975f8963425abdc562d7a19c8301,2056,2056,Jack cheese
+95,2088,dbccfb81-fe65-4c59-b9ac-7574b4c9ec68,2071,4.0,2071,cheese dip,http://www.edamam.com/ontologies/edamam.owl#recipe_2409975f8963425abdc562d7a19c8301,2059,2059,Cilantro
+96,2088,dbccfb81-fe65-4c59-b9ac-7574b4c9ec68,2071,4.0,2071,cheese dip,http://www.edamam.com/ontologies/edamam.owl#recipe_2409975f8963425abdc562d7a19c8301,2060,2060,Jalapeno
+97,2088,dbccfb81-fe65-4c59-b9ac-7574b4c9ec68,2071,4.0,2071,cheese dip,http://www.edamam.com/ontologies/edamam.owl#recipe_2409975f8963425abdc562d7a19c8301,2061,2061,cottage cheese
+98,2090,9cf47856-899b-4c38-9927-540c03211b1b,2078,0.0,2078,Scampi Buzara (Skampi Na Buzaru),http://www.edamam.com/ontologies/edamam.owl#recipe_32462a95f7004d17dcbe7cfc4cf6941f,10,10,garlic
+99,2090,9cf47856-899b-4c38-9927-540c03211b1b,2078,0.0,2078,Scampi Buzara (Skampi Na Buzaru),http://www.edamam.com/ontologies/edamam.owl#recipe_32462a95f7004d17dcbe7cfc4cf6941f,17,17,Salt
+100,2090,9cf47856-899b-4c38-9927-540c03211b1b,2078,0.0,2078,Scampi Buzara (Skampi Na Buzaru),http://www.edamam.com/ontologies/edamam.owl#recipe_32462a95f7004d17dcbe7cfc4cf6941f,24,24,parsley
+101,2090,9cf47856-899b-4c38-9927-540c03211b1b,2078,0.0,2078,Scampi Buzara (Skampi Na Buzaru),http://www.edamam.com/ontologies/edamam.owl#recipe_32462a95f7004d17dcbe7cfc4cf6941f,2003,2003,dry white wine
+102,2090,9cf47856-899b-4c38-9927-540c03211b1b,2078,0.0,2078,Scampi Buzara (Skampi Na Buzaru),http://www.edamam.com/ontologies/edamam.owl#recipe_32462a95f7004d17dcbe7cfc4cf6941f,2006,2006,lemon
+103,2090,9cf47856-899b-4c38-9927-540c03211b1b,2078,0.0,2078,Scampi Buzara (Skampi Na Buzaru),http://www.edamam.com/ontologies/edamam.owl#recipe_32462a95f7004d17dcbe7cfc4cf6941f,2074,2074,extra virgin olive oil
+104,2090,9cf47856-899b-4c38-9927-540c03211b1b,2078,0.0,2078,Scampi Buzara (Skampi Na Buzaru),http://www.edamam.com/ontologies/edamam.owl#recipe_32462a95f7004d17dcbe7cfc4cf6941f,2075,2075,sourdough bread
+105,2090,9cf47856-899b-4c38-9927-540c03211b1b,2078,0.0,2078,Scampi Buzara (Skampi Na Buzaru),http://www.edamam.com/ontologies/edamam.owl#recipe_32462a95f7004d17dcbe7cfc4cf6941f,2076,2076,plum tomatoes
+106,2091,1b765b5a-f78b-4b84-8c37-2050b1365f2a,52,0.0,52,Fathers Day Food Lasagne with Meat,http://www.edamam.com/ontologies/edamam.owl#recipe_f3376c0d85e6469eab470deb14570ac0,1,1,Lasagna
+107,2091,1b765b5a-f78b-4b84-8c37-2050b1365f2a,52,0.0,52,Fathers Day Food Lasagne with Meat,http://www.edamam.com/ontologies/edamam.owl#recipe_f3376c0d85e6469eab470deb14570ac0,2,2,Meat
+108,2091,1b765b5a-f78b-4b84-8c37-2050b1365f2a,52,0.0,52,Fathers Day Food Lasagne with Meat,http://www.edamam.com/ontologies/edamam.owl#recipe_f3376c0d85e6469eab470deb14570ac0,3,3,tomatoes
+109,2094,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2067,5.0,2067,Tabasco Spicy Potatoes,http://www.edamam.com/ontologies/edamam.owl#recipe_cb9682173c56e51ceee2278f11355b27,33,33,Mayonnaise
+110,2094,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2067,5.0,2067,Tabasco Spicy Potatoes,http://www.edamam.com/ontologies/edamam.owl#recipe_cb9682173c56e51ceee2278f11355b27,2051,2051,Tabasco Pepper Sauce
+111,2094,26c1b77f-11ec-4f0b-b9fa-7fe2faf13901,2067,5.0,2067,Tabasco Spicy Potatoes,http://www.edamam.com/ontologies/edamam.owl#recipe_cb9682173c56e51ceee2278f11355b27,2052,2052,lime
+112,2095,19430afd-dbcf-43b9-9184-17a6a5a07062,2076,3.0,2076,Cheese & onion bread,http://www.edamam.com/ontologies/edamam.owl#recipe_c879553de68c4a7a934a7498fec21585,17,17,Salt
+113,2095,19430afd-dbcf-43b9-9184-17a6a5a07062,2076,3.0,2076,Cheese & onion bread,http://www.edamam.com/ontologies/edamam.owl#recipe_c879553de68c4a7a934a7498fec21585,2024,2024,butter
+114,2095,19430afd-dbcf-43b9-9184-17a6a5a07062,2076,3.0,2076,Cheese & onion bread,http://www.edamam.com/ontologies/edamam.owl#recipe_c879553de68c4a7a934a7498fec21585,2071,2071,bread flour
+115,2095,19430afd-dbcf-43b9-9184-17a6a5a07062,2076,3.0,2076,Cheese & onion bread,http://www.edamam.com/ontologies/edamam.owl#recipe_c879553de68c4a7a934a7498fec21585,2072,2072,bread flour
+116,2095,19430afd-dbcf-43b9-9184-17a6a5a07062,2076,3.0,2076,Cheese & onion bread,http://www.edamam.com/ontologies/edamam.owl#recipe_c879553de68c4a7a934a7498fec21585,2073,2073,yeast
+117,3095,19430afd-dbcf-43b9-9184-17a6a5a07062,2077,4.0,2077,Baguettes (French bread),http://www.edamam.com/ontologies/edamam.owl#recipe_3177e127c7a94cb4aad17a3bca47e79d,2071,2071,bread flour
+118,3095,19430afd-dbcf-43b9-9184-17a6a5a07062,2077,4.0,2077,Baguettes (French bread),http://www.edamam.com/ontologies/edamam.owl#recipe_3177e127c7a94cb4aad17a3bca47e79d,2073,2073,yeast

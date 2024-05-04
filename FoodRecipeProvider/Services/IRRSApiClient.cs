@@ -1,6 +1,4 @@
-﻿using FoodRecipeProvider.Models;
-using FoodRecipeProvider.Models.RRS;
-using System.Threading.Tasks;
+﻿using FoodRecipeProvider.Models.RRS;
 
 namespace FoodRecipeProvider.Services
 {

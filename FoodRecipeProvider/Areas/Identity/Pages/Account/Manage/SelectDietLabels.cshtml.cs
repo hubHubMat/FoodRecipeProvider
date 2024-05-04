@@ -4,11 +4,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace FoodRecipeProvider.Areas.Identity.Pages.Account.Manage
 {
@@ -31,7 +26,6 @@ namespace FoodRecipeProvider.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnGetAsync()
         {
-            // Load available diet labels from the database
             AvailableDietLabels = await _context.DietLabels.ToListAsync();
 
             return Page();
@@ -45,22 +39,18 @@ namespace FoodRecipeProvider.Areas.Identity.Pages.Account.Manage
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
-            // Get the user ID
             var userId = await _userManager.GetUserIdAsync(user);
 
             try
             {
-                // Retrieve existing user's diet label associations
                 var existingUserDietLabels = await _context.UserDietLabels
                     .Where(udl => udl.AppUserId == userId)
                     .ToListAsync();
 
-                // Update user's selected diet labels
                 if (SelectedDietLabelIds != null)
                 {
                     var selectedDietLabelIdsSet = new HashSet<int>(SelectedDietLabelIds);
 
-                    // Add new associations
                     foreach (var dietLabelId in selectedDietLabelIdsSet)
                     {
                         if (!existingUserDietLabels.Any(udl => udl.DietLabelId == dietLabelId))
@@ -74,7 +64,6 @@ namespace FoodRecipeProvider.Areas.Identity.Pages.Account.Manage
                         }
                     }
 
-                    // Remove associations that are not selected anymore
                     foreach (var existingUserDietLabel in existingUserDietLabels)
                     {
                         if (!selectedDietLabelIdsSet.Contains(existingUserDietLabel.DietLabelId))
@@ -83,16 +72,15 @@ namespace FoodRecipeProvider.Areas.Identity.Pages.Account.Manage
                         }
                     }
 
-                    // Save changes to the database
                     await _context.SaveChangesAsync();
                 }
 
-                return RedirectToPage("Preferences"); // Redirect to preferences page after successful update
+                return RedirectToPage("Preferences");
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred while updating user's diet labels.");
-                throw; // You may want to handle this more gracefully
+                throw;
             }
         }
     }

@@ -1,14 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using System.Diagnostics;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using System.Security.Claims;
-using FoodRecipeProvider.Services;
+﻿using FoodRecipeProvider.Data;
 using FoodRecipeProvider.Models;
 using FoodRecipeProvider.Models.APIRecipeResponse;
-using FoodRecipeProvider.Data;
-using Azure;
+using FoodRecipeProvider.Services;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
+using System.Security.Claims;
 
 
 namespace FoodRecipeProvider.Controllers
@@ -54,9 +51,9 @@ namespace FoodRecipeProvider.Controllers
                 searchByUrisResponse = await _edamamApiClient.GetRecipesByUrisAsync(recipeuris);
             }
 
-            if(searchByUrisResponse != null)
+            if (searchByUrisResponse != null)
             {
-                foreach (var a in  searchByUrisResponse.hits)
+                foreach (var a in searchByUrisResponse.hits)
                 {
                     await Console.Out.WriteLineAsync(a.recipe.label);
                 }
@@ -95,7 +92,7 @@ namespace FoodRecipeProvider.Controllers
             else return View("Error: Couldn't find recipe.");
         }
 
-           
+
 
 
 
@@ -121,7 +118,7 @@ namespace FoodRecipeProvider.Controllers
                 // Check if an existing rating entry exists for the user and recipe
                 var existingRating = _context.UserRecipeRates
                     .FirstOrDefault(ur => ur.AppUserId == userId && ur.AppRecipeId == recipe.Id);
-                
+
 
                 if (existingRating != null)
                 {

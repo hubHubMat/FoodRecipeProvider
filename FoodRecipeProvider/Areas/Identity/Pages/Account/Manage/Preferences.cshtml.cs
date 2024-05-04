@@ -4,10 +4,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace FoodRecipeProvider.Areas.Identity.Pages.Account.Manage
 {
@@ -39,19 +35,16 @@ namespace FoodRecipeProvider.Areas.Identity.Pages.Account.Manage
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
-            // Load user's cuisine types
             UserCuisineTypes = await _context.UserCuisineTypes
                 .Where(uct => uct.AppUserId == user.Id)
                 .Select(uct => uct.CuisineType)
                 .ToListAsync();
 
-            // Load user's diet labels
             UserDietLabels = await _context.UserDietLabels
                 .Where(udl => udl.AppUserId == user.Id)
                 .Select(udl => udl.DietLabel)
                 .ToListAsync();
 
-            // Load user's health labels
             UserHealthLabels = await _context.UserHealthLabels
                 .Where(uhl => uhl.AppUserId == user.Id)
                 .Select(uhl => uhl.HealthLabel)

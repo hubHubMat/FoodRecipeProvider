@@ -6,70 +6,73 @@
 @{
     ViewData["Title"] = "Search Recipes";
 }
+@if(Model.SearchByUrisResponse is not null)
+{
+    <h3 class="m-2">Recommended recipes</h3>
+    <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            @for (var i = 0; i < Model.SearchByUrisResponse.hits.Count; i++)
+            {
+                if (i == 0)
+                {
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="@i" class="active" aria-current="true" aria-label="Slide @i"></button>
+                }
+                else
+                {
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="@i" aria-label="Slide @i"></button>
+                }
+            }
+        </div>
+        <div class="carousel-inner bg-opacity-10 bg-black">
+            @foreach (var hit in Model.SearchByUrisResponse.hits)
+            {
+                if (Model.SearchByUrisResponse.hits.First() == hit)
+                {
+                    <div class="carousel-item active">
+                        <div class="col-md-3">
+                            <img src="@hit.recipe.image" width="40%" height="32%" class="d-block w-100" alt="@hit.recipe.label">
+                        </div>
+                        <div class="col-md-6 carousel-caption d-none d-md-block rrscontainer">
+                            <h1 class="rrstext">@hit.recipe.label</h1>
+                            <p class="rrstext">Źródło: @hit.recipe.source</p>
+                            <p></p>
 
-<h3 class="m-2">Recommended recipes</h3>
-<div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-        @for (var i = 0; i < Model.SearchByUrisResponse.hits.Count; i++)
-        {
-            if (i == 0)
-            {
-                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="@i" class="active" aria-current="true" aria-label="Slide @i"></button>
+                            <p class="text-end">
+                                <a href="@Url.Action("RecipeDetails", new { recipeUri = hit.recipe.uri })" class="btn btn-primary">View Recipe</a>
+                            </p>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="carousel-item">
+                        <div class="col-md-3">
+                            <img src="@hit.recipe.image" class="d-block w-100" alt="@hit.recipe.label">
+                        </div>
+                        <div class="col-md-6 carousel-caption d-none d-md-block rrscontainer">
+                            <h1 class="rrstext">@hit.recipe.label</h1>
+                            <p class="rrstext">Źródło: @hit.recipe.source</p>
+                            <p></p>
+
+                            <p class="text-end">
+                                <a href="@Url.Action("RecipeDetails", new { recipeUri = hit.recipe.uri })" class="btn btn-primary">View Recipe</a>
+                            </p>
+                        </div>
+                    </div>
+                }
             }
-            else
-            {
-                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="@i" aria-label="Slide @i"></button>
-            }
-        }
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
-    <div class="carousel-inner bg-opacity-10 bg-black">
-        @foreach (var hit in Model.SearchByUrisResponse.hits)
-        {
-            if (Model.SearchByUrisResponse.hits.First() == hit)
-            {
-                <div class="carousel-item active">
-                    <div class="col-md-3">
-                        <img src="@hit.recipe.image" width="40%" height="32%" class="d-block w-100" alt="@hit.recipe.label">
-                    </div>
-                    <div class="col-md-6 carousel-caption d-none d-md-block rrscontainer">
-                        <h1 class="rrstext">@hit.recipe.label</h1>
-                        <p class="rrstext">Źródło: @hit.recipe.source</p>
-                        <p></p>
+}
 
-                        <p class="text-end">
-                            <a href="@Url.Action("RecipeDetails", new { recipeUri = hit.recipe.uri })" class="btn btn-primary">View Recipe</a>
-                        </p>
-                    </div>
-                </div>
-            }
-            else
-            {
-                <div class="carousel-item">
-                    <div class="col-md-3">
-                    <img src="@hit.recipe.image" class="d-block w-100" alt="@hit.recipe.label">
-                    </div>
-                    <div class="col-md-6 carousel-caption d-none d-md-block rrscontainer">
-                        <h1 class="rrstext">@hit.recipe.label</h1>
-                        <p class ="rrstext">Źródło: @hit.recipe.source</p>
-                        <p></p>
-
-                        <p class="text-end">
-                            <a href="@Url.Action("RecipeDetails", new { recipeUri = hit.recipe.uri })" class="btn btn-primary">View Recipe</a>
-                        </p>
-                    </div>
-                </div>
-            }
-        }
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-</div>
 
 <h3 class="m-2 mt-4"></h3>
 <form method="get" action="/Recipes/Index" class="mb-4">
@@ -178,29 +181,12 @@
 </form>
 
 
-@if (Model.SearchByQueryResponse != null && Model.SearchByQueryResponse.hits != null && Model.SearchByQueryResponse.hits.Any())
+@if (Model.SearchByQueryResponse != null && Model.SearchByQueryResponse.hits.Any())
 {
     <div>
         <h6>Count: @Model.SearchByQueryResponse.count</h6>
     </div>
-    @if (Model.SearchByUrisResponse != null && SignInManager.IsSignedIn(User))
-    {
-    <h5>Recommended recipes:</h5>
-    <ul class="recipe-list">
-        @foreach (var recipe in Model.SearchByUrisResponse.hits.Skip((Model.CurrentPage - 1) * 12).Take(12))
-        {
-            <li class="recipe-item">
-                <div class="recipe-image">
-                    <img src="@recipe.recipe.image" alt="Recipe Image">
-                </div>
-                <div class="recipe-info">
-                    <h5 class="recipe-title">@recipe.recipe.label</h5>
-                    <a href="@Url.Action("RecipeDetails", new { recipeUri = recipe.recipe.uri })" class="btn btn-primary recipe-button">View Recipe</a>
-                </div>
-            </li>
-        }
-    </ul>
-    }
+
     <h5>Searched recipes:</h5>
     <ul class="recipe-list">
         @foreach (var recipe in Model.SearchByQueryResponse.hits.Skip((Model.CurrentPage - 1) * 12).Take(12))

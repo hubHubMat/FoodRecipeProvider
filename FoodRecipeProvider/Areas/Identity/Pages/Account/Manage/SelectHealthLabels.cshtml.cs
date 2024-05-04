@@ -4,11 +4,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace FoodRecipeProvider.Areas.Identity.Pages.Account.Manage
 {
@@ -31,7 +26,6 @@ namespace FoodRecipeProvider.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnGetAsync()
         {
-            // Load available health labels from the database
             AvailableHealthLabels = await _context.HealthLabels.ToListAsync();
 
             return Page();
@@ -45,22 +39,18 @@ namespace FoodRecipeProvider.Areas.Identity.Pages.Account.Manage
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
-            // Get the user ID
             var userId = await _userManager.GetUserIdAsync(user);
 
             try
             {
-                // Retrieve existing user's health label associations
                 var existingUserHealthLabels = await _context.UserHealthLabels
                     .Where(uhl => uhl.AppUserId == userId)
                     .ToListAsync();
 
-                // Update user's selected health labels
                 if (SelectedHealthLabelIds != null)
                 {
                     var selectedHealthLabelIdsSet = new HashSet<int>(SelectedHealthLabelIds);
 
-                    // Add new associations
                     foreach (var healthLabelId in selectedHealthLabelIdsSet)
                     {
                         if (!existingUserHealthLabels.Any(uhl => uhl.HealthLabelId == healthLabelId))
@@ -74,7 +64,6 @@ namespace FoodRecipeProvider.Areas.Identity.Pages.Account.Manage
                         }
                     }
 
-                    // Remove associations that are not selected anymore
                     foreach (var existingUserHealthLabel in existingUserHealthLabels)
                     {
                         if (!selectedHealthLabelIdsSet.Contains(existingUserHealthLabel.HealthLabelId))
@@ -83,16 +72,15 @@ namespace FoodRecipeProvider.Areas.Identity.Pages.Account.Manage
                         }
                     }
 
-                    // Save changes to the database
                     await _context.SaveChangesAsync();
                 }
 
-                return RedirectToPage("Preferences"); // Redirect to preferences page after successful update
+                return RedirectToPage("Preferences");
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred while updating user's health labels.");
-                throw; // You may want to handle this more gracefully
+                throw;
             }
         }
     }

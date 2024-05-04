@@ -1,7 +1,7 @@
 using FoodRecipeProvider.Data;
-using Microsoft.EntityFrameworkCore;
-using FoodRecipeProvider.Services;
 using FoodRecipeProvider.Models;
+using FoodRecipeProvider.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,7 +21,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
-// Add Edamam API client
+
 builder.Services.AddHttpClient<EdamamApiClient>(client =>
 {
     client.BaseAddress = new Uri("https://api.edamam.com/");
@@ -29,7 +29,7 @@ builder.Services.AddHttpClient<EdamamApiClient>(client =>
 
 builder.Services.AddHttpClient<RRSApiClient>(client =>
 {
-    client.BaseAddress = new Uri("http://192.168.0.20:5000");
+    client.BaseAddress = new Uri("http://127.0.0.1:5000");
 });
 
 builder.Services.Configure<EdamamApiOptions>(configuration.GetSection("EdamamApi"));
@@ -40,7 +40,7 @@ var app = builder.Build();
 
 
 
-// Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseMigrationsEndPoint();
@@ -48,7 +48,7 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+
     app.UseHsts();
 }
 

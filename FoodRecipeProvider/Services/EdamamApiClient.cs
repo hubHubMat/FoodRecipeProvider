@@ -1,10 +1,9 @@
-﻿using Microsoft.Extensions.Options;
+﻿using FoodRecipeProvider.Data;
 using FoodRecipeProvider.Models;
 using FoodRecipeProvider.Models.APIRecipeResponse;
-using Newtonsoft.Json;
-using Azure;
 using Microsoft.EntityFrameworkCore;
-using FoodRecipeProvider.Data;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 
 namespace FoodRecipeProvider.Services
 {
@@ -218,7 +217,7 @@ namespace FoodRecipeProvider.Services
         }
     }
 }
-                
-    
+
+
 
 

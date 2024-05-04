@@ -6,9 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodRecipeProvider", "FoodRecipeProvider\FoodRecipeProvider.csproj", "{669606BA-CB45-49E0-A733-012FCBC3E19E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8A192007-3E7E-4B43-A5B9-22F50E66DCC3}"
-	ProjectSection(SolutionItems) = preProject
-		pythonScript.py = pythonScript.py
-	EndProjectSection
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "RecipeRecommendationSystemAPI", "RecipeRecommendationSystem\RecipeRecommendationSystemAPI.pyproj", "{52B69FFE-C125-481E-8045-49D730506571}"
 EndProject

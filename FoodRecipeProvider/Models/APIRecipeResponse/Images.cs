@@ -1,7 +1,5 @@
-﻿using Newtonsoft.Json;
-
-namespace FoodRecipeProvider.Models.APIRecipeResponse
-{  
+﻿namespace FoodRecipeProvider.Models.APIRecipeResponse
+{
 
     public class Images
     {
@@ -11,7 +9,7 @@ namespace FoodRecipeProvider.Models.APIRecipeResponse
         public LARGE LARGE { get; set; }
     }
 
-   
+
 
     public class LARGE
     {
@@ -26,7 +24,7 @@ namespace FoodRecipeProvider.Models.APIRecipeResponse
         public Next next { get; set; }
     }
 
-    
+
 
     public class REGULAR
     {
@@ -35,12 +33,12 @@ namespace FoodRecipeProvider.Models.APIRecipeResponse
         public int height { get; set; }
     }
 
-    
+
     public class Self
     {
         public string title { get; set; }
         public string href { get; set; }
-    } 
+    }
     public class Next
     {
         public string title { get; set; }
@@ -60,7 +58,7 @@ namespace FoodRecipeProvider.Models.APIRecipeResponse
         public string url { get; set; }
         public int width { get; set; }
         public int height { get; set; }
-    }  
+    }
 
 
 }

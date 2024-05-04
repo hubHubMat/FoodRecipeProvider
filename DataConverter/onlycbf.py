@@ -1,4 +1,3 @@
-
 from flask import Flask, jsonify, request
 import pandas as pd
 import sqlalchemy
@@ -57,7 +56,7 @@ def recommend_recipes(user_id, top_n=5):
 
         for rated_recipe in user_rated_recipes:
             recipe_idx = recipe_features[recipe_features['Uri'] == rated_recipe].index[0]
-            similar_recipes = item_similarity_matrix[recipe_idx].argsort()[::-1][1:]
+            similar_recipes = item_similarity_matrix[recipe_idx].argsort()[::-1][1:]  # Exclude self
             for sim_recipe_idx in similar_recipes:
                 sim_recipe_uri = recipe_features.iloc[sim_recipe_idx]['Uri']
                 if sim_recipe_uri not in user_rated_recipes:
